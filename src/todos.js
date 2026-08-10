@@ -1,7 +1,7 @@
 //Look more into this npm library I imported for dates formatting
 import {format} from 'date-fns';
 
-export let todosArray = [];
+export let defaultTodosArray = [];
 
 export class TodoItem {
     constructor(title, description, dueDate, priority) {
@@ -14,4 +14,4 @@ export class TodoItem {
 
 export const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, and refill box.", "January 8 2024", "High");
 
-todosArray.push(cleanLitterBox);
+defaultTodosArray.push(cleanLitterBox);
