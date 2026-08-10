@@ -15,3 +15,10 @@ export class TodoItem {
 export const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, and refill box.", "January 8 2024", "High");
 
 defaultTodosArray.push(cleanLitterBox);
+
+class Project {
+    constructor(title, description) {
+        this.title = title;
+        this.description = description;
+    }
+}
