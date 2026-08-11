@@ -28,6 +28,6 @@ clean.addTodoItem(cleanLitterBox);
 clean.addTodoItem(cleanKitchenFloor);
 clean.addTodoItem(cleanBathroomFloors);
 
-clean.removeTodoItem(cleanKitchenFloor);
+cleanKitchenFloor.editTodoItem("Clean Kitchen Floor", "Sweep floor", "August 18 2026", "High");
 
 console.log(clean);

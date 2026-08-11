@@ -8,4 +8,10 @@ export class TodoItem {
         this.dueDate = format(new Date (dueDate), "MM/dd/yyyy");
         this.priority = priority;
     }
+    editTodoItem(newTitle, newDescription, newDueDate, newPriority) {
+        this.title = newTitle;
+        this.description = newDescription;
+        this.dueDate = newDueDate;
+        this.priority = newPriority;
+    }
 }
