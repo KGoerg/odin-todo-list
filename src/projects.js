@@ -10,11 +10,24 @@ class Project {
     addTodoItem(todoItem) {
         this.projectArray.push(todoItem);
     }
+
+    removeTodoItem(todoItem) {
+        const todoIndex = this.projectArray.indexOf(todoItem);
+        const splicedProjectArray = this.projectArray.splice(todoIndex, 1);
+        return splicedProjectArray;
+    }
 }
 
 const clean = new Project("Clean", "A list of things that need cleaning!");
 
-const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, and refill box.", "January 8 2024", "High");
+const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, and refill box.", "August 11 2026", "High");
+const cleanKitchenFloor = new TodoItem("Clean Kitchen Floor", "Sweep and Swiffer Wet mop the floor.", "August 11 2026", "Medium")
+const cleanBathroomFloors = new TodoItem("Clean Bathroom Floor", "Sweep and Swiffer Wet mop the floors", "August 11 2026", "Medium");
 
 clean.addTodoItem(cleanLitterBox);
+clean.addTodoItem(cleanKitchenFloor);
+clean.addTodoItem(cleanBathroomFloors);
+
+clean.removeTodoItem(cleanKitchenFloor);
+
 console.log(clean);
