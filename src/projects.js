@@ -4,17 +4,24 @@ class Project {
     constructor(title, description) {
         this.title = title;
         this.description = description;
-        this.projectArray = []
+        this.projectArray = [];
+        this.completedProjectArray = [];
     }
 
     addTodoItem(todoItem) {
         this.projectArray.push(todoItem);
     }
 
-    removeTodoItem(todoItem) {
+    deleteTodoItem(todoItem) {
         const todoIndex = this.projectArray.indexOf(todoItem);
-        const splicedProjectArray = this.projectArray.splice(todoIndex, 1);
-        return splicedProjectArray;
+        const deletedTodoItemArray = this.projectArray.splice(todoIndex, 1);
+        console.log(deletedTodoItemArray);
+    }
+
+    markTodoComplete(todoItem) {
+        const todoIndex = this.projectArray.indexOf(todoItem);
+        const completedProjectArray = this.projectArray.splice(todoIndex, 1);
+        console.log(completedProjectArray);
     }
 }
 
@@ -29,5 +36,8 @@ clean.addTodoItem(cleanKitchenFloor);
 clean.addTodoItem(cleanBathroomFloors);
 
 cleanKitchenFloor.editTodoItem("Clean Kitchen Floor", "Sweep floor", "August 18 2026", "High");
+
+clean.markTodoComplete(cleanKitchenFloor);
+clean.deleteTodoItem(cleanLitterBox);
 
 console.log(clean);
