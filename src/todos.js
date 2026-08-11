@@ -1,8 +1,6 @@
 //Look more into this npm library I imported for dates formatting
 import {format} from 'date-fns';
 
-let defaultTodosArray = [];
-
 class Project {
     constructor(title, description) {
         this.title = title;
@@ -16,7 +14,6 @@ class Project {
 }
 
 const clean = new Project("Clean", "A list of things that need cleaning!")
-
 
 console.log(clean);
 
@@ -33,4 +30,3 @@ const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, an
 
 console.log(cleanLitterBox);
 console.log(clean.addTodoItem(cleanLitterBox));
-
