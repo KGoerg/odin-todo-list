@@ -1,7 +1,7 @@
 import { TodoItem } from "./todos.js";
 
-let deletedTodoItemArray = [];
-let completedProjectArray = [];
+let deletedTodoItemsArray = [];
+let completedTodoItemsArray = [];
 
 class Project {
     constructor(title, description) {
@@ -31,12 +31,12 @@ class Project {
 
     deleteTodoItem(todoItem) {
         const todoIndex = this.projectArray.indexOf(todoItem);
-        const deletedTodoItemArray = this.projectArray.splice(todoIndex, 1);
+        const deletedTodoItemsArray = this.projectArray.splice(todoIndex, 1);
     }
 
     markTodoComplete(todoItem) {
         const todoIndex = this.projectArray.indexOf(todoItem);
-        completedProjectArray = this.projectArray.splice(todoIndex, 1);
+        completedTodoItemsArray = this.projectArray.splice(todoIndex, 1);
     }
 }
 
@@ -53,7 +53,7 @@ clean.addTodoItem(cleanBathroomFloors);
 // cleanKitchenFloor.editTodoItem("Clean Kitchen Floor", "", "August 18 2026", "High");
 
 clean.markTodoComplete(cleanKitchenFloor);
-console.log(completedProjectArray);
+console.log(completedTodoItemsArray);
 clean.deleteTodoItem(cleanLitterBox);
 
 clean.editProject("", "Clean up!");
