@@ -9,7 +9,12 @@ class Project {
     }
 
     editProject(newTitle, newDescription) {
-        this.title = newTitle;
+        if (newTitle === "") {
+            this.title = this.title;
+        } else {
+            this.title = newTitle;
+        }
+
         if (newDescription === "") {
             this.description = this.description;
         } else {
@@ -49,6 +54,6 @@ cleanKitchenFloor.editTodoItem("Clean Kitchen Floor", "Sweep floor", "August 18 
 clean.markTodoComplete(cleanKitchenFloor);
 clean.deleteTodoItem(cleanLitterBox);
 
-clean.editProject("Wash", "");
+clean.editProject("", "Clean up!");
 
 console.log(clean);
