@@ -9,9 +9,28 @@ export class TodoItem {
         this.priority = priority;
     }
     editTodoItem(newTitle, newDescription, newDueDate, newPriority) {
-        this.title = newTitle;
-        this.description = newDescription;
-        this.dueDate = newDueDate;
-        this.priority = newPriority;
+        if (newTitle === "") {
+            this.title = this.title;
+        } else {
+            this.title = newTitle;
+        }
+
+        if (newDescription === "") {
+            this.description = this.description;
+        } else {
+            this.description = newDescription;
+        }
+
+        if (newDueDate === "") {
+            this.dueDate = this.dueDate;
+        } else {
+            this.dueDate = newDueDate;
+        }
+
+        if (newPriority === "") {
+            this.priority = this.priority;
+        } else {
+            this.priority = newPriority;
+        }
     }
 }
