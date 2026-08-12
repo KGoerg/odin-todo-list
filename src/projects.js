@@ -8,6 +8,15 @@ class Project {
         this.completedProjectArray = [];
     }
 
+    editProject(newTitle, newDescription) {
+        this.title = newTitle;
+        if (newDescription === "") {
+            this.description = this.description;
+        } else {
+            this.description = newDescription;
+        }
+    }
+
     addTodoItem(todoItem) {
         this.projectArray.push(todoItem);
     }
@@ -39,5 +48,7 @@ cleanKitchenFloor.editTodoItem("Clean Kitchen Floor", "Sweep floor", "August 18 
 
 clean.markTodoComplete(cleanKitchenFloor);
 clean.deleteTodoItem(cleanLitterBox);
+
+clean.editProject("Wash", "");
 
 console.log(clean);
