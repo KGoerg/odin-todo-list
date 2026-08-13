@@ -2,15 +2,16 @@ import { TodoItem } from "./todos.js";
 
 let deletedTodoItemsArray = [];
 let completedTodoItemsArray = [];
-
-let projectsArray = [];
 let deletedProjectsArray = [];
 
 class Project {
+    static allProjects = [];
+
     constructor(title, description) {
         this.title = title;
         this.description = description;
         this.todoItemsArray = [];
+        Project.allProjects.push(this);
         this.completedProjectArray = [];
     }
 
@@ -28,6 +29,11 @@ class Project {
         }
     }
 
+    deleteProject(project) {
+        const projectIndex = Project.allProjects.indexOf(project);
+        deletedProjectsArray = Project.allProjects.splice(projectIndex, 1);
+    }
+
     addTodoItem(todoItem) {
         this.todoItemsArray.push(todoItem);
     }
@@ -43,21 +49,12 @@ class Project {
     }
 }
 
-function addProject(project) {
-    projectsArray.push(project);
-};
-
-function deleteProject(project) {
-    const projectIndex = this.projectsArray.indexOf(project);
-    const deletedProjectsArray = this.todoItemsArray.splice(todoIndex, 1);
-};
-
 //Testing
 const clean = new Project("Clean", "A list of things that need cleaning!");
-addProject(clean);
 const powerPointProject = new Project("PowerPoint", "A deck made for our new client.")
-addProject(powerPointProject);
-console.log(projectsArray);
+
+powerPointProject.deleteProject(powerPointProject);
+console.log(Project.allProjects);
 
 //Create todo items
 const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, and refill box.", "August 11 2026", "High");
