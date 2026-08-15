@@ -8,7 +8,7 @@ export function createDefaultProject() {
     defaultProjectContainer.classList.add("project");
     projectsContainer.appendChild(defaultProjectContainer);
 
-    const defaultProjectHeader = document.createElement("h2");
+    const defaultProjectHeader = document.createElement("button");
     defaultProjectHeader.textContent = defaultProject.title;
     defaultProjectContainer.appendChild(defaultProjectHeader);
 }
