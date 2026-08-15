@@ -2,30 +2,33 @@
 import "./styles.css";
 import {deletedTodoItemsArray, completedTodoItemsArray, deletedProjectsArray, Project} from "./projects.js";
 import {TodoItem} from "./todos.js";
+import { createDefaultProject } from "./sidebar-render.js";
 
-//Testing
-const clean = new Project("Clean", "A list of things that need cleaning!");
-const powerPointProject = new Project("PowerPoint", "A deck made for our new client.")
+createDefaultProject();
 
-powerPointProject.deleteProject(powerPointProject);
-console.log(Project.allProjects);
+// //Testing
+// const clean = new Project("Clean", "A list of things that need cleaning!");
+// const powerPointProject = new Project("PowerPoint", "A deck made for our new client.")
 
-//Create todo items
-const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, and refill box.", "August 11 2026", "High");
-const cleanKitchenFloor = new TodoItem("Clean Kitchen Floor", "Sweep and Swiffer Wet mop the floor.", "August 11 2026", "Medium")
-const cleanBathroomFloors = new TodoItem("Clean Bathroom Floor", "Sweep and Swiffer Wet mop the floors", "August 11 2026", "Medium");
+// powerPointProject.deleteProject(powerPointProject);
+// console.log(Project.allProjects);
 
-//Add todos to a project
-clean.addTodoItem(cleanLitterBox);
-clean.addTodoItem(cleanKitchenFloor);
-clean.addTodoItem(cleanBathroomFloors);
+// //Create todo items
+// const cleanLitterBox = new TodoItem("Clean Litter Box", "Empty, scrub, rinse, and refill box.", "August 11 2026", "High");
+// const cleanKitchenFloor = new TodoItem("Clean Kitchen Floor", "Sweep and Swiffer Wet mop the floor.", "August 11 2026", "Medium")
+// const cleanBathroomFloors = new TodoItem("Clean Bathroom Floor", "Sweep and Swiffer Wet mop the floors", "August 11 2026", "Medium");
 
-//Edit todos
-cleanKitchenFloor.editTodoItem("Clean Kitchen Floor", "", "August 18 2026", "High");
+// //Add todos to a project
+// clean.addTodoItem(cleanLitterBox);
+// clean.addTodoItem(cleanKitchenFloor);
+// clean.addTodoItem(cleanBathroomFloors);
 
-//Mark complete/delete
-clean.markTodoComplete(cleanKitchenFloor);
-console.log(completedTodoItemsArray);
-clean.deleteTodoItem(cleanLitterBox);
+// //Edit todos
+// cleanKitchenFloor.editTodoItem("Clean Kitchen Floor", "", "August 18 2026", "High");
 
-clean.editProject("", "Clean up!");
+// //Mark complete/delete
+// clean.markTodoComplete(cleanKitchenFloor);
+// console.log(completedTodoItemsArray);
+// clean.deleteTodoItem(cleanLitterBox);
+
+// clean.editProject("", "Clean up!");
