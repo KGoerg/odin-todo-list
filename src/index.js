@@ -2,9 +2,9 @@
 import "./styles.css";
 import {deletedTodoItemsArray, completedTodoItemsArray, deletedProjectsArray, Project} from "./projects.js";
 import {TodoItem} from "./todos.js";
-import { createDefaultProject } from "./sidebar-render.js";
+import { renderDefaultProject } from "./sidebar-render.js";
 
-createDefaultProject();
+renderDefaultProject();
 
 // //Testing
 // const clean = new Project("Clean", "A list of things that need cleaning!");
