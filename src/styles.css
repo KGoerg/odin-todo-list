@@ -70,3 +70,9 @@ body {
 #sidebar h1 {
   text-align: center;
 }
+
+.sidebar-header {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
