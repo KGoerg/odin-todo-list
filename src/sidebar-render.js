@@ -16,8 +16,10 @@ export function renderNewProject(project) {
 
     // Add edit buttons
     const editButton = document.createElement("button");
+    editButton.id = project.id;
     editButton.textContent = "Edit";
     newProjectContainer.appendChild(editButton);
+    console.log(editButton);
 
     // Add delete buttons
     const deleteButton = document.createElement("button");
