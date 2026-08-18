@@ -25,4 +25,10 @@ export function renderNewProject(project) {
     newProjectContainer.appendChild(deleteButton);
 };
 
+//Resets the form field after submitting
+const form = document.querySelector("form");
+form.addEventListener("submit", function() {
+  form.reset();
+});
+
 // On-click of the Default Project button, generate the project title, description below title, and todo items, in the content section. Need to figure out how to organize code in order to do this.
