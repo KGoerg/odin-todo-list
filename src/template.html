@@ -9,8 +9,22 @@
     <div id="sidebar">
         <div class="sidebar-header">
             <h1>My Projects</h1>
-            <button>New Project</button>
-            </div>
+            <button command="show-modal" id="add-new-project" commandfor="my-dialog">New Project</button>
+        </div>
+        <div class="dialog">
+            <dialog id="my-dialog">
+                <p>Add project details below:</p>
+                <form action="" method="dialog">
+                    <label for="project_name">Project Name</label>
+                    <input type="text" id="project_name" name="project_name" required>
+
+                    <label for="project_description">Project Description:</label>
+                    <input type="text" id="project_description" name="project_description">
+
+                    <button type="submit">Submit</button>
+                </form>
+            </dialog>
+        </div>
         <div class="projects-container"></div>
     </div>
 
