@@ -7,6 +7,7 @@ export class TodoItem {
         this.description = description;
         this.dueDate = format(new Date (dueDate), "MM/dd/yyyy");
         this.priority = priority;
+        this.id = crypto.randomUUID();
     }
     editTodoItem(newTitle, newDescription, newDueDate, newPriority) {
         if (newTitle === "") {

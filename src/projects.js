@@ -10,9 +10,9 @@ class Project {
     constructor(title, description) {
         this.title = title;
         this.description = description;
+        this.id = crypto.randomUUID();
         this.todoItemsArray = [];
         Project.allProjects.push(this);
-        this.completedProjectArray = [];
     }
 
     editProject(newTitle, newDescription) {
