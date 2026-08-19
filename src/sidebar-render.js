@@ -17,6 +17,7 @@ export function renderNewProject(project) {
     // Add edit buttons
     const editButton = document.createElement("button");
     editButton.id = project.id;
+    editButton.classList.add("edit");
     editButton.textContent = "Edit";
     newProjectContainer.appendChild(editButton);
     console.log(editButton);
