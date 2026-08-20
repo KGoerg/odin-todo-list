@@ -2,6 +2,7 @@ import { Project } from "./projects.js";
 
 const projectsContainer = document.querySelector(".projects-container");
 let editButtonsArray = [];
+const editButtonModal = document.querySelector("#edit-project")
 //Creates DOM buttons for project's name, edit, and delete
 export function renderNewProject(project) {
     const newProject = project;
@@ -14,15 +15,23 @@ export function renderNewProject(project) {
     newProjectHeader.textContent = newProject.title;
     newProjectContainer.appendChild(newProjectHeader);
 
-    // Add edit buttons
+    // Add edit buttons & functionality
     const editButton = document.createElement("button");
     editButton.id = project.id;
     editButton.classList.add("edit");
     editButton.textContent = "Edit";
     editButtonsArray.push(editButton);
     newProjectContainer.appendChild(editButton);
-    console.log(editButton);
     console.log(editButtonsArray);
+
+    editButtonsArray.forEach(button => {
+      button.addEventListener("click", (event) => {
+        project.editProject("Hello", "");
+        newProjectHeader.textContent = project.title;
+        console.log(project);
+        
+      });
+    });
 
     // Add delete buttons
     const deleteButton = document.createElement("button");
@@ -46,7 +55,5 @@ export const formReset = document.querySelector("form");
 formReset.addEventListener("submit", function() {
   formReset.reset();
 });
-
-
 
 // On-click of the Default Project button, generate the project title, description below title, and todo items, in the content section. Need to figure out how to organize code in order to do this.
