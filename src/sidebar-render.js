@@ -2,7 +2,7 @@ import { Project } from "./projects.js";
 
 const projectsContainer = document.querySelector(".projects-container");
 
-//Creates button with project's name
+//Creates DOM buttons for project's name, edit, and delete
 export function renderNewProject(project) {
     const newProject = project;
 
@@ -27,5 +27,8 @@ export function renderNewProject(project) {
     deleteButton.textContent = "Delete";
     newProjectContainer.appendChild(deleteButton);
 };
+
+let editButtonArray = document.querySelectorAll(".edit");
+console.log(editButtonArray);
 
 // On-click of the Default Project button, generate the project title, description below title, and todo items, in the content section. Need to figure out how to organize code in order to do this.
