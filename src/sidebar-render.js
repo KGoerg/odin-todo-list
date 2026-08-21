@@ -3,6 +3,8 @@ import { Project } from "./projects.js";
 const projectsContainer = document.querySelector(".projects-container");
 let editButtonsArray = [];
 const editButtonModal = document.querySelector("#edit-project");
+
+let deleteButtonsArray = [];
   
 //Creates DOM buttons for project's name, edit, and delete
 export function renderNewProject(project) {
@@ -10,6 +12,7 @@ export function renderNewProject(project) {
 
     const newProjectContainer = document.createElement("div");
     newProjectContainer.classList.add("project");
+    newProjectContainer.id = project.id;
     projectsContainer.appendChild(newProjectContainer);
 
     const newProjectHeader = document.createElement("button");
@@ -42,8 +45,24 @@ export function renderNewProject(project) {
     });
     // Add delete buttons
     const deleteButton = document.createElement("button");
+    deleteButton.id = project.id;
+    deleteButton.classList.add("delete");
     deleteButton.textContent = "Delete";
+    deleteButtonsArray.push(deleteButton);
     newProjectContainer.appendChild(deleteButton);
+    console.log(deleteButtonsArray);
+
+    deleteButton.addEventListener("click", (event) => {
+      //Remove project from Projects.allProjects array
+      let selectedProject = Project.allProjects.find(element => element.id === deleteButton.id);
+      selectedProject.deleteProject(selectedProject);
+      console.log(Project.allProjects);
+      //Remove div from DOM
+      let projectNodeID = deleteButton.id;
+      let projectNode = document.getElementById(projectNodeID);
+      projectNode.remove();
+    })
+
 };
 //Gets user input, then passes that to renderNewProject() when clicking the Submit button on the form to render to page and pass Project info to backend Project array.
 export const submitButton = document.querySelector('button[type="submit"]').addEventListener("click", function(event) {
