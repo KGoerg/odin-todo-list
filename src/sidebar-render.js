@@ -25,16 +25,13 @@ export function renderNewProject(project) {
     newProjectContainer.appendChild(editButton);
     console.log(editButtonsArray);
 
-    // editButtonsArray.forEach(button => {
     editButton.addEventListener("click", (event) => {
-      let selectedButton = event.target;
-      let selectedButtonID = selectedButton.id;
-      let selectedProject = Project.allProjects.find(element => element.id === selectedButtonID);
+      // let selectedButtonID = editButton.id;
+      let selectedProject = Project.allProjects.find(element => element.id === editButton.id);
       console.log(selectedProject.title);
-      selectedButton.style.color = "blue";
+      editButton.style.color = "blue";
       editButtonModal.showModal();
       
-      //Need to figure out why it's updating more than just the current project's button text
       const editSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
         let newFormTitle = document.getElementById("new_project_name").value;
         let newFormDescription = document.getElementById("new_project_description").value;
