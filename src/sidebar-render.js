@@ -30,12 +30,19 @@ export function renderNewProject(project) {
         let selectedButton = event.target;
         let selectedButtonID = selectedButton.id;
         let selectedProject = Project.allProjects.find(element => element.id === selectedButtonID);
-        console.log(selectedProject);
+        console.log(selectedProject.title);
         selectedButton.style.color = "blue";
         editButtonModal.showModal();
-        project.editProject("Hello", "");
-        newProjectHeader.textContent = project.title;
-        console.log(project);
+        
+        //Need to figure out why it's updating more than just the current project's button text
+        const editSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
+          let newFormTitle = document.getElementById("new_project_name").value;
+          let newFormDescription = document.getElementById("new_project_description").value;
+          selectedProject.editProject(newFormTitle, newFormDescription);
+          newProjectHeader.textContent = selectedProject.title;
+          console.log(Project.allProjects);
+        })
+        // console.log(project);
       });
     });
 
