@@ -26,7 +26,6 @@ export function renderNewProject(project) {
     console.log(editButtonsArray);
 
     editButton.addEventListener("click", (event) => {
-      // let selectedButtonID = editButton.id;
       let selectedProject = Project.allProjects.find(element => element.id === editButton.id);
       console.log(selectedProject.title);
       editButton.style.color = "blue";
@@ -58,10 +57,9 @@ export const submitButton = document.querySelector('button[type="submit"]').addE
     console.log(Project.allProjects);
 }});
 
-//Resets the form field after submitting
-export const formReset = document.querySelector("form");
-formReset.addEventListener("submit", function() {
-  formReset.reset();
-});
-
-// On-click of the Default Project button, generate the project title, description below title, and todo items, in the content section. Need to figure out how to organize code in order to do this.
+//Resets form fields after submitting
+const formResetArray = document.querySelectorAll("form");
+formResetArray.forEach(element => {
+  element.addEventListener("submit", function() {
+  element.reset();
+})});
