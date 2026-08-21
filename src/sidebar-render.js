@@ -2,7 +2,8 @@ import { Project } from "./projects.js";
 
 const projectsContainer = document.querySelector(".projects-container");
 let editButtonsArray = [];
-const editButtonModal = document.querySelector("#edit-project")
+const editButtonModal = document.querySelector("#edit-project");
+  
 //Creates DOM buttons for project's name, edit, and delete
 export function renderNewProject(project) {
     const newProject = project;
@@ -26,10 +27,15 @@ export function renderNewProject(project) {
 
     editButtonsArray.forEach(button => {
       button.addEventListener("click", (event) => {
+        let selectedButton = event.target;
+        let selectedButtonID = selectedButton.id;
+        let selectedProject = Project.allProjects.find(element => element.id === selectedButtonID);
+        console.log(selectedProject);
+        selectedButton.style.color = "blue";
+        editButtonModal.showModal();
         project.editProject("Hello", "");
         newProjectHeader.textContent = project.title;
         console.log(project);
-        
       });
     });
 
