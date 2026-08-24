@@ -7,7 +7,7 @@ const editButtonModal = document.querySelector("#edit-project");
 let deleteButtonsArray = [];
   
 //Creates DOM buttons for project's name, edit, and delete
-export function renderNewProject(project) {
+export function renderProjectButtons(project) {
     const newProject = project;
 
     const newProjectContainer = document.createElement("div");
@@ -65,7 +65,7 @@ export function renderNewProject(project) {
 
 };
 
-//Gets user input, then passes that to renderNewProject() when clicking the Submit button on the form to render to page and pass Project info to backend Project array.
+//Gets user input, then passes that to renderProjectButtons() when clicking the Submit button on the form to render to page and pass Project info to backend Project array.
 export const newProjectSubmitButton = document.querySelector('button[type="submit"]').addEventListener("click", function(event) {
     const formTitle = document.getElementById("project_name").value;
     const formDescription = document.getElementById("project_description").value;
@@ -73,7 +73,7 @@ export const newProjectSubmitButton = document.querySelector('button[type="submi
     newProjectSubmitButton.disabled = true;
   } else {
     const project = new Project(formTitle, formDescription);
-    renderNewProject(project);
+    renderProjectButtons(project);
     console.log(Project.allProjects);
 }});
 

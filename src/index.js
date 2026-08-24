@@ -2,13 +2,16 @@
 import "./styles.css";
 import {deletedTodoItemsArray, completedTodoItemsArray, deletedProjectsArray, Project} from "./projects.js";
 import {TodoItem} from "./todos.js";
-import {renderNewProject } from "./sidebar-render.js";
-import { submitButton, formReset } from "./sidebar-buttons.js";
+import {renderProjectButtons } from "./sidebar-render.js";
+import { renderContent } from "./content-render.js";
 
 //Testing
 const defaultProject = new Project("Default Project", "A default space to put any tasks you haven't sorted yet!");
 
-renderNewProject(defaultProject);
+renderProjectButtons(defaultProject);
+console.log(Project.allProjects);
+// let editButtonArray = document.querySelectorAll(".edit");
+// console.log(editButtonArray);
 
 // const clean = new Project("Clean", "A list of things that need cleaning!");
 // const powerPointProject = new Project("PowerPoint", "A deck made for our new client.")
