@@ -45,6 +45,30 @@
 
     <div id="content">
         <div class="todos-container"></div>
+        <button command="show-modal" id="add-new-todo" commandfor="todo-dialog">New To-do Item</button>
+        <div class="dialog">
+            <dialog id="todo-dialog" closedby="any">
+                <p>Add to-do items below:</p>
+                <form action="" method="dialog">
+                    <label for="todo_name">To-do Name</label>
+                    <input type="text" id="todo_name" name="todo_name" required>
+
+                    <label for="todo_description">To-do Description:</label>
+                    <input type="text" id="todo_description" name="todo_description">
+
+                    <label for="todo_due_date">Due Date:</label>
+                    <input type="date" id="todo_due_date" name="todo_due_date">
+
+                    <label for="priority">Priority Level:</label>
+                    <select id="priority" name="priority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </dialog>
+        </div>
     </div>
 </body>
 </html>
