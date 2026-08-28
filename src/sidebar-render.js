@@ -36,16 +36,11 @@ export function renderProjectButtons(project) {
     //Running into a bug where the edit button is editing multiple projects at once. Once a project has been edited, it seems to be stuck in edit mode.
     const editSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
       let selectedProject = Project.allProjects.find(element => element.id === editButton.id);
-      console.log(selectedProject);
-      console.log(editButton.id);
       let newFormTitle = document.getElementById("new_project_name").value;
       let newFormDescription = document.getElementById("new_project_description").value;
       selectedProject.editProject(newFormTitle, newFormDescription);
       newProjectHeader.textContent = selectedProject.title;
-      console.log(Project.allProjects);
-      selectedProject = null;
-      console.log(selectedProject);
-      })
+      }, { once: true});
       // console.log(project);
     });
     // Add delete buttons
