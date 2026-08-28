@@ -21,7 +21,7 @@
                     <label for="project_description">Project Description:</label>
                     <input type="text" id="project_description" name="project_description">
 
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="project-submit">Submit</button>
                 </form>
             </dialog>
         </div>
@@ -48,12 +48,12 @@
         <button command="show-modal" id="add-new-todo" commandfor="todo-dialog">New To-do Item</button>
         <div class="dialog">
             <dialog id="todo-dialog" closedby="any">
-                <p>Add to-do items below:</p>
+                <p>Add to-do below:</p>
                 <form action="" method="dialog">
-                    <label for="todo_name">To-do Name</label>
+                    <label for="todo_name">Name</label>
                     <input type="text" id="todo_name" name="todo_name" required>
 
-                    <label for="todo_description">To-do Description:</label>
+                    <label for="todo_description">Description:</label>
                     <input type="text" id="todo_description" name="todo_description">
 
                     <label for="todo_due_date">Due Date:</label>
