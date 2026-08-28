@@ -1,4 +1,5 @@
 import { Project } from "./projects.js";
+import { projectTitle } from "./content-render.js";
 
 const projectsContainer = document.querySelector(".projects-container");
 let editButtonsArray = [];
@@ -18,6 +19,11 @@ export function renderProjectButtons(project) {
     const newProjectHeader = document.createElement("button");
     newProjectHeader.textContent = newProject.title;
     newProjectContainer.appendChild(newProjectHeader);
+
+    //Project button functionality
+    newProjectHeader.addEventListener("click", () => {
+      projectTitle.textContent = newProjectHeader.textContent;
+    });
 
     // Add edit buttons & functionality
     const editButton = document.createElement("button");
@@ -40,9 +46,11 @@ export function renderProjectButtons(project) {
       let newFormDescription = document.getElementById("new_project_description").value;
       selectedProject.editProject(newFormTitle, newFormDescription);
       newProjectHeader.textContent = selectedProject.title;
+      projectTitle.textContent = selectedProject.title;
       }, { once: true});
       // console.log(project);
     });
+
     // Add delete buttons
     const deleteButton = document.createElement("button");
     deleteButton.id = project.id;
