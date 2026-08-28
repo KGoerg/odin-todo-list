@@ -74,8 +74,8 @@ export function renderProjectButtons(project) {
 export const newProjectSubmitButton = document.getElementById("project-submit").addEventListener("click", function(event) {
     const projectFormTitle = document.getElementById("project_name").value;
     const projectFormDescription = document.getElementById("project_description").value;
-    if (projectFormTitle === "" || projectFormDescription === "") {
-    newProjectSubmitButton.disabled = true;
+    if (projectFormTitle === "") {
+    alert("You must enter a Project Name");
   } else {
     const project = new Project(projectFormTitle, projectFormDescription);
     renderProjectButtons(project);
