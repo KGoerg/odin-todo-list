@@ -26,20 +26,25 @@ export function renderProjectButtons(project) {
     editButton.textContent = "Edit";
     editButtonsArray.push(editButton);
     newProjectContainer.appendChild(editButton);
-    console.log(editButtonsArray);
+    // console.log(editButtonsArray);
 
     editButton.addEventListener("click", (event) => {
-      let selectedProject = Project.allProjects.find(element => element.id === editButton.id);
-      console.log(selectedProject.title);
       editButton.style.color = "blue";
       editButtonModal.showModal();
-      
-      const editSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
-        let newFormTitle = document.getElementById("new_project_name").value;
-        let newFormDescription = document.getElementById("new_project_description").value;
-        selectedProject.editProject(newFormTitle, newFormDescription);
-        newProjectHeader.textContent = selectedProject.title;
-        console.log(Project.allProjects);
+    
+
+    //Running into a bug where the edit button is editing multiple projects at once. Once a project has been edited, it seems to be stuck in edit mode.
+    const editSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
+      let selectedProject = Project.allProjects.find(element => element.id === editButton.id);
+      console.log(selectedProject);
+      console.log(editButton.id);
+      let newFormTitle = document.getElementById("new_project_name").value;
+      let newFormDescription = document.getElementById("new_project_description").value;
+      selectedProject.editProject(newFormTitle, newFormDescription);
+      newProjectHeader.textContent = selectedProject.title;
+      console.log(Project.allProjects);
+      selectedProject = null;
+      console.log(selectedProject);
       })
       // console.log(project);
     });
@@ -50,7 +55,7 @@ export function renderProjectButtons(project) {
     deleteButton.textContent = "Delete";
     deleteButtonsArray.push(deleteButton);
     newProjectContainer.appendChild(deleteButton);
-    console.log(deleteButtonsArray);
+    // console.log(deleteButtonsArray);
 
     deleteButton.addEventListener("click", (event) => {
       //Remove project from Projects.allProjects array
@@ -66,10 +71,10 @@ export function renderProjectButtons(project) {
 };
 
 //Gets user input, then passes that to renderProjectButtons() when clicking the Submit button on the form to render to page and pass Project info to backend Project array.
-export const newProjectSubmitButton = document.querySelector('button[type="submit"]').addEventListener("click", function(event) {
+export const newProjectSubmitButton = document.getElementById("project-submit").addEventListener("click", function(event) {
     const projectFormTitle = document.getElementById("project_name").value;
     const projectFormDescription = document.getElementById("project_description").value;
-    if (projectFormTitle === "" || formDescription === "") {
+    if (projectFormTitle === "" || projectFormDescription === "") {
     newProjectSubmitButton.disabled = true;
   } else {
     const project = new Project(projectFormTitle, projectFormDescription);
