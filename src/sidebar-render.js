@@ -74,8 +74,6 @@ export function renderProjectButtons(project) {
       projectNode.remove();
       projectTitle.textContent = "";
       projectDescription.textContent = "";
-      TodoItem.allTodos = [];
-      console.log(TodoItem.allTodos);
     })
 
 };
