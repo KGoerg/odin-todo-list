@@ -71,6 +71,8 @@ export function renderProjectButtons(project) {
       let projectNodeID = deleteButton.id;
       let projectNode = document.getElementById(projectNodeID);
       projectNode.remove();
+      projectTitle.textContent = "";
+      projectDescription.textContent = "";
     })
 
 };
