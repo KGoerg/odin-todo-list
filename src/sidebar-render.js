@@ -1,5 +1,5 @@
 import { Project } from "./projects.js";
-import { projectTitle, projectDescription, renderContent } from "./content-render.js";
+import { projectTitle, projectDescription, renderContent, deleteRenderedContent} from "./content-render.js";
 import { TodoItem } from "./todos.js";
 
 const projectsContainer = document.querySelector(".projects-container");
@@ -71,10 +71,9 @@ export function renderProjectButtons(project) {
       let projectNodeID = deleteButton.id;
       let projectNode = document.getElementById(projectNodeID);
       projectNode.remove();
-      projectTitle.textContent = "";
-      projectDescription.textContent = "";
+      //Remove rendered content
+      deleteRenderedContent(projectTitle, projectDescription);
     })
-
 };
 
 //Gets user input, then passes that to renderProjectButtons() when clicking the Submit button on the form to render to page and pass Project info to backend Project array.
