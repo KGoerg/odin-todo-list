@@ -38,5 +38,7 @@ export function renderContent(project) {
 export function deleteRenderedContent(title, description, button) {
     title.textContent = "";
     description.textContent = "";
-    currentTodoButton.remove();
-}
+    if (currentTodoButton != null) {
+        currentTodoButton.remove();
+    }
+};
