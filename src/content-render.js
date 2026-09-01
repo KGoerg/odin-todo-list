@@ -20,15 +20,23 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
 
 const todosModal = document.querySelector("#todo-dialog");
 
+let currentTodoButton;
 export function renderContent(project) {
     projectTitle.textContent = project.title;
     const newTodoButton = document.createElement("button");
     newTodoButton.textContent = "New To-do Item";
+    currentTodoButton = newTodoButton;
 
     newTodoButton.addEventListener("click", function(event) {
         todosModal.showModal();
     })
-    
+
     contentContainer.appendChild(newTodoButton);
     projectDescription.textContent = project.description;
 };
+
+export function deleteRenderedContent(title, description, button) {
+    title.textContent = "";
+    description.textContent = "";
+    currentTodoButton.remove();
+}
