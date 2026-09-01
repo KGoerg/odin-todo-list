@@ -1,5 +1,5 @@
 import { Project } from "./projects.js";
-import { projectTitle, projectDescription } from "./content-render.js";
+import { projectTitle, projectDescription, renderContent } from "./content-render.js";
 import { TodoItem } from "./todos.js";
 
 const projectsContainer = document.querySelector(".projects-container");
@@ -23,8 +23,7 @@ export function renderProjectButtons(project) {
 
     //Project button functionality
     newProjectHeader.addEventListener("click", () => {
-      projectTitle.textContent = newProjectHeader.textContent;
-      projectDescription.textContent = newProject.description;
+      renderContent(newProject);
     });
 
     // Add edit buttons & functionality
