@@ -10,7 +10,6 @@ let deleteButtonsArray = [];
   
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
-    const newProject = project;
 
     const newProjectContainer = document.createElement("div");
     newProjectContainer.classList.add("project");
@@ -18,12 +17,12 @@ export function renderProjectButtons(project) {
     projectsContainer.appendChild(newProjectContainer);
 
     const newProjectHeader = document.createElement("button");
-    newProjectHeader.textContent = newProject.title;
+    newProjectHeader.textContent = project.title;
     newProjectContainer.appendChild(newProjectHeader);
 
     //Project button functionality
     newProjectHeader.addEventListener("click", () => {
-      renderContent(newProject);
+      renderContent(project);
     });
 
     // Add edit buttons & functionality
@@ -36,9 +35,7 @@ export function renderProjectButtons(project) {
     // console.log(editButtonsArray);
 
     editButton.addEventListener("click", (event) => {
-      editButton.style.color = "blue";
       editButtonModal.showModal();
-    
 
     //Running into a bug where the edit button is editing multiple projects at once. Once a project has been edited, it seems to be stuck in edit mode.
     const editSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
@@ -50,7 +47,6 @@ export function renderProjectButtons(project) {
       projectTitle.textContent = selectedProject.title;
       projectDescription.textContent = selectedProject.description;
       }, { once: true});
-      // console.log(project);
     });
 
     // Add delete buttons
@@ -60,7 +56,6 @@ export function renderProjectButtons(project) {
     deleteButton.textContent = "Delete";
     deleteButtonsArray.push(deleteButton);
     newProjectContainer.appendChild(deleteButton);
-    // console.log(deleteButtonsArray);
 
     deleteButton.addEventListener("click", (event) => {
       //Remove project from Projects.allProjects array
