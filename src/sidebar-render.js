@@ -7,7 +7,8 @@ let editButtonsArray = [];
 const editButtonModal = document.querySelector("#edit-project");
 
 let deleteButtonsArray = [];
-  
+let currentProject;
+
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
 
@@ -23,6 +24,8 @@ export function renderProjectButtons(project) {
     //Project button functionality
     newProjectHeader.addEventListener("click", () => {
       renderContent(project); 
+      let currentProject = project;
+      console.log(currentProject);
     });
 
     // Add edit buttons & functionality
