@@ -22,7 +22,7 @@ export function renderProjectButtons(project) {
 
     //Project button functionality
     newProjectHeader.addEventListener("click", () => {
-      renderContent(project);
+      renderContent(project); 
     });
 
     // Add edit buttons & functionality
@@ -78,8 +78,8 @@ export const newProjectSubmitButton = document.getElementById("project-submit").
     if (projectFormTitle === "") {
     alert("You must enter a Project Name");
   } else {
-    const project = new Project(projectFormTitle, projectFormDescription);
-    renderProjectButtons(project);
+    const newProject = new Project(projectFormTitle, projectFormDescription);
+    renderProjectButtons(newProject);
     console.log(Project.allProjects);
 }});
 
