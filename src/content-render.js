@@ -19,9 +19,9 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
 
 const todosModal = document.querySelector("#todo-dialog");
 
+const newTodoButton = document.createElement("button");
 let currentTodoButton;
 export function renderContent(project) {
-    const newTodoButton = document.createElement("button");
     newTodoButton.textContent = "New To-do Item";
     currentTodoButton = newTodoButton;
 
