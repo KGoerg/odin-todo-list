@@ -1,4 +1,5 @@
 import { TodoItem } from "./todos.js";
+import { currentProject } from "./sidebar-render.js";
 
 const contentContainer = document.querySelector("#content");
 
@@ -14,7 +15,7 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     const todoDueDate = document.getElementById("todo_due_date").value;
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
-    console.log(newTodo);
+    currentProject.addTodoItem(newTodo);
 });
 
 const todosModal = document.querySelector("#todo-dialog");
