@@ -7,7 +7,7 @@ export const projectTitle = document.createElement("h1");
 export const projectDescription = document.createElement("h2");
 
 const todosContainer = document.querySelector(".todos-container");
-
+let currentToDo;
 //Get data from the todos form and create a new todo item
 const todosFormSubmitButton = document.getElementById("todos-submit").addEventListener("click", function(event) {
     const todosFormTitle = document.getElementById("todo_name").value;
@@ -15,13 +15,23 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     const todoDueDate = document.getElementById("todo_due_date").value;
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
+    currentToDo = newTodo;
     currentProject.addTodoItem(newTodo);
+    renderCurrentTodoItem(currentToDo);
 });
+
+function renderCurrentTodoItem(todo) {
+    const todoListItem = document.createElement("li");
+    todoListItem.classList.add("todo-list-item");
+    todoListItem.textContent = `${todo.title} Due Date: ${todo.dueDate}`;
+    todosContainer.appendChild(todoListItem);
+};
 
 const todosModal = document.querySelector("#todo-dialog");
 
 const newTodoButton = document.createElement("button");
 let currentTodoButton;
+//The below function is used when clicking on the project's name in the sidebar to load everything into the content panel at once.
 export function renderContent(project) {
     newTodoButton.textContent = "New To-do Item";
     currentTodoButton = newTodoButton;
