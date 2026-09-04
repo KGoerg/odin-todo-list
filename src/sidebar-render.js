@@ -1,5 +1,5 @@
 import { Project } from "./projects.js";
-import { projectTitle, projectDescription, renderContent, deleteRenderedContent} from "./content-render.js";
+import { projectTitle, projectDescription, renderContent, deleteRenderedContent, contentContainer} from "./content-render.js";
 import { TodoItem } from "./todos.js";
 
 const projectsContainer = document.querySelector(".projects-container");
@@ -7,7 +7,7 @@ let editButtonsArray = [];
 const editButtonModal = document.querySelector("#edit-project");
 
 let deleteButtonsArray = [];
-let currentProject;
+export let currentProject;
 
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
@@ -24,8 +24,9 @@ export function renderProjectButtons(project) {
     //Project button functionality
     newProjectHeader.addEventListener("click", () => {
       renderContent(project); 
-      let currentProject = project;
-      console.log(currentProject);
+      currentProject = project;
+      contentContainer.id = project.id;
+      console.log(contentContainer);
     });
 
     // Add edit buttons & functionality

@@ -1,7 +1,7 @@
 import { TodoItem } from "./todos.js";
 import { currentProject } from "./sidebar-render.js";
 
-const contentContainer = document.querySelector("#content");
+export const contentContainer = document.querySelector("#content");
 
 export const projectTitle = document.createElement("h1");
 export const projectDescription = document.createElement("h2");
