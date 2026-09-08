@@ -21,19 +21,30 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
 });
 
 function renderCurrentTodoItem(todo) {
-    const todoListItem = document.createElement("li");
-    todoListItem.classList.add("todo-list-item");
-    todoListItem.textContent = `${todo.title} Due Date: ${todo.dueDate}`;
-    todosContainer.appendChild(todoListItem);
+    const todoItemContainer = document.createElement("div");
+    todoItemContainer.classList.add("todo-item-container");
+    todosContainer.appendChild(todoItemContainer);
+
+    const todoListItemName = document.createElement("li");
+    todoListItemName.classList.add("todo-list-item");
+    todoListItemName.textContent = `${todo.title}`;
+
+    const todoListDueDate = document.createElement("p");
+    todoListDueDate.classList.add("todo-list-item");
+    todoListDueDate.textContent = `Due Date: ${todo.dueDate}`;
+
+    todoItemContainer.appendChild(todoListItemName);
+    todoItemContainer.appendChild(todoListDueDate);
 };
 
 const todosModal = document.querySelector("#todo-dialog");
 
 const newTodoButton = document.createElement("button");
+
 //The below function is used when clicking on the project's name in the sidebar to load everything into the content panel at once.
 export function renderContent(project) {
     newTodoButton.textContent = "New To-do Item";
-    
+
     projectTitle.textContent = project.title;
     contentContainer.appendChild(projectTitle);
     
