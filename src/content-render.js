@@ -52,9 +52,9 @@ export function renderContent(project) {
 };
 
 export function deleteRenderedContent(deleter, container) {
+    console.log(deleter.id);
+    console.log(container.id);
         if (deleter.id === container.id) {
-            while (container.firstChild) {
-                Element.removeChild(Element.firstChild);
-            }
+            container.replaceChildren();
         }
 };
