@@ -30,12 +30,10 @@ function renderCurrentTodoItem(todo) {
 const todosModal = document.querySelector("#todo-dialog");
 
 const newTodoButton = document.createElement("button");
-let currentTodoButton;
 //The below function is used when clicking on the project's name in the sidebar to load everything into the content panel at once.
 export function renderContent(project) {
     newTodoButton.textContent = "New To-do Item";
-    currentTodoButton = newTodoButton;
-
+    
     projectTitle.textContent = project.title;
     contentContainer.appendChild(projectTitle);
     
