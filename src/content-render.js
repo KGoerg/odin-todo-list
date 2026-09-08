@@ -51,24 +51,10 @@ export function renderContent(project) {
     })
 };
 
-//Need to fix bug where, if a non-selected project is deleted, it still deletes what's rendered on the page. See most recent Mousepad with a plan to fix it using an ID on the todos-container.
-export function deleteRenderedContent(title, description) {
-    // if (currentProject.title === title.textContent && currentProject.description === description.textContent) {
-    //     title.textContent = currentProject.title;
-    //     description.textContent = currentProject.description;
-    // } else {
-        title.textContent = "";
-        description.textContent = "";
-        if (currentTodoButton != null) {
-        currentTodoButton.remove();
-    }
-    
-    // title.textContent = "";
-    // description.textContent = "";
-    // if (currentTodoButton != null) {
-    //     currentTodoButton.remove();
-    // }
-    // while (todosContainer.firstChild) {
-    //     todosContainer.removeChild(todosContainer.firstChild);
-    // }
+export function deleteRenderedContent(deleter, container) {
+        if (deleter.id === container.id) {
+            while (container.firstChild) {
+                Element.removeChild(Element.firstChild);
+            }
+        }
 };
