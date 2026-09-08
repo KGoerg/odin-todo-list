@@ -71,7 +71,7 @@ export function renderProjectButtons(project) {
       let projectNode = document.getElementById(projectNodeID);
       projectNode.remove();
       //Remove rendered content
-      deleteRenderedContent(projectTitle, projectDescription);
+      deleteRenderedContent(deleteButton, contentContainer);
     })
 };
 
