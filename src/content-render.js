@@ -3,8 +3,8 @@ import { currentProject } from "./sidebar-render.js";
 
 export const contentContainer = document.querySelector("#content");
 
-export const projectTitle = document.createElement("h1");
-export const projectDescription = document.createElement("h2");
+export let projectTitle = document.createElement("h1");
+export let projectDescription = document.createElement("h2");
 
 const todosContainer = document.querySelector(".todos-container");
 let currentToDo;
@@ -42,7 +42,9 @@ export function renderContent(project) {
     projectDescription.textContent = project.description;
     contentContainer.appendChild(projectDescription);
     
-    contentContainer.appendChild(newTodoButton);
+    if (newTodoButton !== null) {
+        contentContainer.appendChild(newTodoButton);
+    }
     contentContainer.appendChild(todosContainer);
 
     //Open todos modal on click
@@ -55,6 +57,8 @@ export function deleteRenderedContent(deleter, container) {
     console.log(deleter.id);
     console.log(container.id);
         if (deleter.id === container.id) {
-            container.replaceChildren();
+            projectTitle.textContent = "";
+            projectDescription.textContent = "";
+            contentContainer.removeChild(newTodoButton);
         }
 };
