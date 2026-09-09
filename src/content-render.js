@@ -7,7 +7,7 @@ export let projectTitle = document.createElement("h1");
 export let projectDescription = document.createElement("h2");
 
 const todosContainer = document.querySelector(".todos-container");
-let currentToDo;
+let currentTodo;
 //Get data from the todos form and create a new todo item
 const todosFormSubmitButton = document.getElementById("todos-submit").addEventListener("click", function(event) {
     const todosFormTitle = document.getElementById("todo_name").value;
@@ -15,9 +15,11 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     const todoDueDate = document.getElementById("todo_due_date").value;
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
-    currentToDo = newTodo;
+    newTodo.id;
+    console.log(newTodo.id);
+    currentTodo = newTodo;
     currentProject.addTodoItem(newTodo);
-    renderCurrentTodoItem(currentToDo);
+    renderCurrentTodoItem(currentTodo);
 });
 
 function renderCurrentTodoItem(todo) {
@@ -37,11 +39,11 @@ function renderCurrentTodoItem(todo) {
     todoEditButton.textContent = "Edit";
     todoEditButton.classList.add("edit");
     todoEditButton.type = "button";
+    todoEditButton.id = todo.id;
 
     todoEditButton.addEventListener("click", (event) => {
-        todoEditButton.id = currentProject.id;
+        todosEditModal.showModal();
         console.log(todoEditButton.id);
-        todosModal.showModal();
     });
 
     const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
@@ -49,8 +51,7 @@ function renderCurrentTodoItem(todo) {
         let newTodoDescription = document.getElementById("new_todo_description").value;
         let newTodoDueDate = document.getElementById("new_todo_due_date").value;
         let newTodoPriority = document.getElementById("new_priority").value;
-
-        todosFormTitle = newTodoTitle;
+        console.log(currentTodo);
     }
     );
 
@@ -60,6 +61,7 @@ function renderCurrentTodoItem(todo) {
 };
 
 const todosModal = document.querySelector("#todo-dialog");
+const todosEditModal = document.querySelector("#edit-todos");
 
 const newTodoButton = document.createElement("button");
 
