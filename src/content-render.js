@@ -25,16 +25,38 @@ function renderCurrentTodoItem(todo) {
     todoItemContainer.classList.add("todo-item-container");
     todosContainer.appendChild(todoItemContainer);
 
-    const todoListItemName = document.createElement("li");
-    todoListItemName.classList.add("todo-list-item");
-    todoListItemName.textContent = `${todo.title}`;
+    const todoItemName = document.createElement("li");
+    todoItemName.classList.add("todo-list-item");
+    todoItemName.textContent = `${todo.title}`;
 
-    const todoListDueDate = document.createElement("p");
-    todoListDueDate.classList.add("todo-list-item");
-    todoListDueDate.textContent = `Due Date: ${todo.dueDate}`;
+    const todoDueDate = document.createElement("p");
+    todoDueDate.classList.add("todo-list-item");
+    todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
 
-    todoItemContainer.appendChild(todoListItemName);
-    todoItemContainer.appendChild(todoListDueDate);
+    const todoEditButton = document.createElement("button");
+    todoEditButton.textContent = "Edit";
+    todoEditButton.classList.add("edit");
+    todoEditButton.type = "button";
+
+    todoEditButton.addEventListener("click", (event) => {
+        todoEditButton.id = currentProject.id;
+        console.log(todoEditButton.id);
+        todosModal.showModal();
+    });
+
+    const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
+        let newTodoTitle = document.getElementById("new_todo_name").value;
+        let newTodoDescription = document.getElementById("new_todo_description").value;
+        let newTodoDueDate = document.getElementById("new_todo_due_date").value;
+        let newTodoPriority = document.getElementById("new_priority").value;
+
+        todosFormTitle = newTodoTitle;
+    }
+    );
+
+    todoItemContainer.appendChild(todoItemName);
+    todoItemContainer.appendChild(todoDueDate);
+    todoItemContainer.appendChild(todoEditButton);
 };
 
 const todosModal = document.querySelector("#todo-dialog");
