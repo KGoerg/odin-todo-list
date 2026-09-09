@@ -44,7 +44,7 @@
     </div>
 
     <div id="content">
-        <div class="todos-container"></div>
+        <form class="todos-container"></form>
         <div class="dialog">
             <dialog id="todo-dialog" closedby="any">
                 <p>Add to-do below:</p>
@@ -65,6 +65,30 @@
                         <option value="low">Low</option>
                     </select>
                     <button type="submit" id="todos-submit">Submit</button>
+                </form>
+            </dialog>
+        </div>
+
+        <div class="dialog">
+            <dialog id="edit-todos" closedby="any">
+                <p>Edit to-do below:</p>
+                <form action="" method="dialog">
+                    <label for="new_todo_name">Name</label>
+                    <input type="text" id="new_todo_name" name="new_todo_name" required>
+
+                    <label for="new_todo_description">Description:</label>
+                    <input type="text" id="new_todo_description" name="new_todo_description">
+
+                    <label for="new_todo_due_date">Due Date:</label>
+                    <input type="date" id="todo_due_date" name="todo_due_date">
+
+                    <label for="new_priority">Priority Level:</label>
+                    <select id="new_priority" name="new_priority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <button type="submit" id="todos-edit-submit">Submit</button>
                 </form>
             </dialog>
         </div>
