@@ -38,12 +38,9 @@ export class TodoItem {
 
 export function formatDate(date) {
     const dateArray = date.split("-");
-    console.log(dateArray);
     const year = dateArray[0];
-    console.log(year);
     const month = dateArray[1];
-    console.log(month);
+    parseInt(month);
     const day = dateArray[2];
-    console.log(day);
-    return format(new Date(year, month, day), "MM/dd/yyyy");
+    return format(new Date(year, month-1, day), "MM/dd/yyyy");
 }

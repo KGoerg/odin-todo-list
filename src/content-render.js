@@ -14,7 +14,6 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     const todosFormTitle = document.getElementById("todo_name").value;
     const todosFormDescription = document.getElementById("todo_description").value;
     let todoDueDate = document.getElementById("todo_due_date").value;
-    console.log(todoDueDate);
     console.log(todoDueDate = formatDate(todoDueDate));
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
@@ -65,11 +64,11 @@ function renderCurrentTodoItem(todo) {
         let newTodoTitle = document.getElementById("new_todo_name").value;
         let newTodoDescription = document.getElementById("new_todo_description").value;
         let newTodoDueDate = document.getElementById("new_todo_due_date").value;
+        newTodoDueDate = formatDate(newTodoDueDate);
         let newTodoPriority = document.getElementById("new_priority").value;
         selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
         todoItemName.textContent = selectedTodoItem.title;
         todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
-        console.log(currentProject.todoItemsArray);
     });
 };
 
