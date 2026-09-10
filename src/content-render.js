@@ -16,7 +16,6 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
     newTodo.id;
-    console.log(newTodo.id);
     currentTodo = newTodo;
     currentProject.addTodoItem(newTodo);
     renderCurrentTodoItem(currentTodo);
@@ -26,6 +25,10 @@ function renderCurrentTodoItem(todo) {
     const todoItemContainer = document.createElement("div");
     todoItemContainer.classList.add("todo-item-container");
     todosContainer.appendChild(todoItemContainer);
+
+    const todoItemCompleteButton = document.createElement("button");
+    todoItemCompleteButton.classList.add("todo-complete-button");
+    todoItemCompleteButton.textContent = "Done!";
 
     const todoItemName = document.createElement("li");
     todoItemName.classList.add("todo-list-item");
@@ -41,23 +44,28 @@ function renderCurrentTodoItem(todo) {
     todoEditButton.type = "button";
     todoEditButton.id = todo.id;
 
+    todoItemContainer.appendChild(todoItemCompleteButton);
+    todoItemContainer.appendChild(todoItemName);
+    todoItemContainer.appendChild(todoDueDate);
+    todoItemContainer.appendChild(todoEditButton);
+
     todoEditButton.addEventListener("click", (event) => {
         todosEditModal.showModal();
+        console.log(selectedTodoItem.id);
         console.log(todoEditButton.id);
     });
 
+    let selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
+
+//Need to figure out why this is updating every todo item, even with the "once: true" rule.
     const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
         let newTodoTitle = document.getElementById("new_todo_name").value;
         let newTodoDescription = document.getElementById("new_todo_description").value;
         let newTodoDueDate = document.getElementById("new_todo_due_date").value;
         let newTodoPriority = document.getElementById("new_priority").value;
-        console.log(currentTodo);
-    }
-    );
-
-    todoItemContainer.appendChild(todoItemName);
-    todoItemContainer.appendChild(todoDueDate);
-    todoItemContainer.appendChild(todoEditButton);
+        selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
+        console.log(currentProject.todoItemsArray);
+    }, { once: true });
 };
 
 const todosModal = document.querySelector("#todo-dialog");
@@ -79,6 +87,12 @@ export function renderContent(project) {
         contentContainer.appendChild(newTodoButton);
     }
     contentContainer.appendChild(todosContainer);
+
+    todosContainer.replaceChildren();
+
+    project.todoItemsArray.forEach((todo) => {
+            renderCurrentTodoItem(todo)
+        });
 
     //Open todos modal on click
     newTodoButton.addEventListener("click", function(event) {
