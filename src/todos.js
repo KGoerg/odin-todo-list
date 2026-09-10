@@ -5,7 +5,7 @@ export class TodoItem {
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
-        this.dueDate = format(new Date (dueDate), "MM/dd/yyyy");
+        this.dueDate = dueDate;
         this.priority = priority;
         this.id = crypto.randomUUID();
     }
@@ -34,4 +34,16 @@ export class TodoItem {
             this.priority = newPriority;
         }
     }
+};
+
+export function formatDate(date) {
+    const dateArray = date.split("-");
+    console.log(dateArray);
+    const year = dateArray[0];
+    console.log(year);
+    const month = dateArray[1];
+    console.log(month);
+    const day = dateArray[2];
+    console.log(day);
+    return format(new Date(year, month, day), "MM/dd/yyyy");
 }

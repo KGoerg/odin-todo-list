@@ -1,5 +1,6 @@
-import { TodoItem } from "./todos.js";
+import { TodoItem , formatDate} from "./todos.js";
 import { currentProject } from "./sidebar-render.js";
+import {format} from 'date-fns';
 
 export const contentContainer = document.querySelector("#content");
 
@@ -12,11 +13,13 @@ let currentTodo;
 const todosFormSubmitButton = document.getElementById("todos-submit").addEventListener("click", function(event) {
     const todosFormTitle = document.getElementById("todo_name").value;
     const todosFormDescription = document.getElementById("todo_description").value;
-    const todoDueDate = document.getElementById("todo_due_date").value;
+    let todoDueDate = document.getElementById("todo_due_date").value;
+    console.log(todoDueDate);
+    console.log(todoDueDate = formatDate(todoDueDate));
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
-    newTodo.id;
     currentTodo = newTodo;
+    newTodo.id;
     currentProject.addTodoItem(newTodo);
     renderCurrentTodoItem(currentTodo);
 });
@@ -64,8 +67,10 @@ function renderCurrentTodoItem(todo) {
         let newTodoDueDate = document.getElementById("new_todo_due_date").value;
         let newTodoPriority = document.getElementById("new_priority").value;
         selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
+        todoItemName.textContent = selectedTodoItem.title;
+        todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
         console.log(currentProject.todoItemsArray);
-    }, { once: true });
+    });
 };
 
 const todosModal = document.querySelector("#todo-dialog");
