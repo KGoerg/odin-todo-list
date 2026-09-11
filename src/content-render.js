@@ -52,24 +52,33 @@ function renderCurrentTodoItem(todo) {
 
     todoEditButton.addEventListener("click", (event) => {
         todosEditModal.showModal();
-        // console.log(selectedTodoItem.id);
-        console.log(todoEditButton.id);
+        const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
+            selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
+            let newTodoTitle = document.getElementById("new_todo_name").value;
+            let newTodoDescription = document.getElementById("new_todo_description").value;
+            let newTodoDueDate = document.getElementById("new_todo_due_date").value;
+            newTodoDueDate = formatDate(newTodoDueDate);
+            let newTodoPriority = document.getElementById("new_priority").value;
+            selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
+            todoItemName.textContent = selectedTodoItem.title;
+            todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
+        });
     });
 
     let selectedTodoItem;
 
 //Need to figure out why this is updating every todo item, even with the "once: true" rule.
-    const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
-        selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
-        let newTodoTitle = document.getElementById("new_todo_name").value;
-        let newTodoDescription = document.getElementById("new_todo_description").value;
-        let newTodoDueDate = document.getElementById("new_todo_due_date").value;
-        newTodoDueDate = formatDate(newTodoDueDate);
-        let newTodoPriority = document.getElementById("new_priority").value;
-        selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
-        todoItemName.textContent = selectedTodoItem.title;
-        todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
-    });
+    // const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
+    //     selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
+    //     let newTodoTitle = document.getElementById("new_todo_name").value;
+    //     let newTodoDescription = document.getElementById("new_todo_description").value;
+    //     let newTodoDueDate = document.getElementById("new_todo_due_date").value;
+    //     newTodoDueDate = formatDate(newTodoDueDate);
+    //     let newTodoPriority = document.getElementById("new_priority").value;
+    //     selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
+    //     todoItemName.textContent = selectedTodoItem.title;
+    //     todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
+    // });
 
 //Delete button
     const todoDeleteButton = document.createElement("button");
