@@ -43,7 +43,6 @@ function renderCurrentTodoItem(todo) {
     const todoEditButton = document.createElement("button");
     todoEditButton.textContent = "Edit";
     todoEditButton.classList.add("edit");
-    todoEditButton.type = "button";
     todoEditButton.id = todo.id;
 
     todoItemContainer.appendChild(todoItemCompleteButton);
@@ -70,6 +69,13 @@ function renderCurrentTodoItem(todo) {
         todoItemName.textContent = selectedTodoItem.title;
         todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
     });
+
+//Delete button
+    const todoDeleteButton = document.createElement("button");
+    todoDeleteButton.id = selectedTodoItem.id;
+    todoDeleteButton.classList.add("delete");
+    todoDeleteButton.textContent = "Delete";
+    todoItemContainer.appendChild(todoDeleteButton);
 };
 
 const todosModal = document.querySelector("#todo-dialog");
