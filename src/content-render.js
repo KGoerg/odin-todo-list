@@ -52,14 +52,15 @@ function renderCurrentTodoItem(todo) {
 
     todoEditButton.addEventListener("click", (event) => {
         todosEditModal.showModal();
-        console.log(selectedTodoItem.id);
+        // console.log(selectedTodoItem.id);
         console.log(todoEditButton.id);
     });
 
-    let selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
+    let selectedTodoItem;
 
 //Need to figure out why this is updating every todo item, even with the "once: true" rule.
     const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
+        selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
         let newTodoTitle = document.getElementById("new_todo_name").value;
         let newTodoDescription = document.getElementById("new_todo_description").value;
         let newTodoDueDate = document.getElementById("new_todo_due_date").value;
@@ -72,10 +73,16 @@ function renderCurrentTodoItem(todo) {
 
 //Delete button
     const todoDeleteButton = document.createElement("button");
-    todoDeleteButton.id = selectedTodoItem.id;
+    todoDeleteButton.id = currentProject.id;
     todoDeleteButton.classList.add("delete");
     todoDeleteButton.textContent = "Delete";
     todoItemContainer.appendChild(todoDeleteButton);
+
+    todoDeleteButton.addEventListener("click", () => {
+        currentProject.deleteTodoItem(selectedTodoItem);
+        console.log(currentProject.todoItemsArray);
+        todoDeleteButton.closest("div").remove();
+    })
 };
 
 const todosModal = document.querySelector("#todo-dialog");
@@ -101,7 +108,7 @@ export function renderContent(project) {
     todosContainer.replaceChildren();
 
     project.todoItemsArray.forEach((todo) => {
-            renderCurrentTodoItem(todo)
+            renderCurrentTodoItem(todo);
         });
 
     //Open todos modal on click
