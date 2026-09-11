@@ -67,9 +67,7 @@ export function renderProjectButtons(project) {
       selectedProject.deleteProject(selectedProject);
       console.log(Project.allProjects);
       //Remove div from DOM
-      let projectNodeID = deleteButton.id;
-      let projectNode = document.getElementById(projectNodeID);
-      projectNode.remove();
+      deleteButton.closest("div").remove();
       //Remove rendered content
       deleteRenderedContent(deleteButton, contentContainer);
     })
