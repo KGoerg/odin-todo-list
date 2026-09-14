@@ -48,8 +48,12 @@ export function renderProjectButtons(project) {
       let newFormDescription = document.getElementById("new_project_description").value;
       selectedProject.editProject(newFormTitle, newFormDescription);
       newProjectHeader.textContent = selectedProject.title;
-      projectTitle.textContent = selectedProject.title;
-      projectDescription.textContent = selectedProject.description;
+      if (projectTitle.textContent === "") {
+        projectTitle.textContent = selectedProject.title;
+      }
+      if (projectDescription.textContent === "") {
+        projectDescription.textContent = selectedProject.description;
+      }
       }, { once: true});
     });
 
