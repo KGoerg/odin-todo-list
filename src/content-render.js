@@ -30,9 +30,11 @@ function renderCurrentTodoItem(todo) {
 
     const todoItemCompleteButton = document.createElement("button");
     todoItemCompleteButton.classList.add("todo-complete-button");
-    todoItemCompleteButton.textContent = "Done!";
+    todoItemCompleteButton.id = "complete-button";
 
-    const todoItemName = document.createElement("li");
+    const todoInformation = document.createElement("div");
+
+    const todoItemName = document.createElement("p");
     todoItemName.classList.add("todo-list-item");
     todoItemName.textContent = `${todo.title}`;
 
@@ -46,8 +48,9 @@ function renderCurrentTodoItem(todo) {
     todoEditButton.id = todo.id;
 
     todoItemContainer.appendChild(todoItemCompleteButton);
-    todoItemContainer.appendChild(todoItemName);
-    todoItemContainer.appendChild(todoDueDate);
+    todoInformation.appendChild(todoItemName);
+    todoInformation.appendChild(todoDueDate);
+    todoItemContainer.appendChild(todoInformation);
     todoItemContainer.appendChild(todoEditButton);
 
     todoEditButton.addEventListener("click", (event) => {
