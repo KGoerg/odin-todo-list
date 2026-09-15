@@ -99,20 +99,24 @@ body {
 
 .left-visible-info {
   flex-direction: column;
+  margin-left: 10px;
 }
 
 .right-visible-info button {
   height: 30px;
 }
 
-.right-visible-info button:nth-child(2), button:nth-child(3) {
+.right-visible-info button:nth-child(2), .right-visible-info button:nth-child(3) {
   width: 30px;
   height: 30px;
 }
 
 .hidden-information {
   display: flex;
+  justify-content: space-between;
   width: 60%;
+  grid-column: 2;
+  margin-left: 10px;
 }
 
 #complete-button {
