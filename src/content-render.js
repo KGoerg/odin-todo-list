@@ -33,6 +33,7 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.id = "complete-button";
 
     const todoVisibleInformation = document.createElement("div");
+    todoVisibleInformation.classList.add("visible-information");
 
     const todoItemName = document.createElement("p");
     todoItemName.classList.add("todo-list-item");
@@ -43,25 +44,49 @@ function renderCurrentTodoItem(todo) {
     todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
 
     const todoHiddenInformation = document.createElement("div");
-    todoHiddenInformation.classList.add("hidden-text");
+    todoHiddenInformation.classList.add("hidden-information");
+    todoHiddenInformation.style.display = "none";
     const todoDescription = document.createElement("p");
     todoDescription.textContent = `Description: ${todo.description}`;
+    const priorityListed = document.createElement("p");
+    priorityListed.textContent = `Priority Level: ${todo.priority}`;
+
+    const showMoreLess = document.createElement("button");
+    showMoreLess.textContent = "Show Details";
 
     const todoEditButton = document.createElement("button");
     todoEditButton.textContent = "Edit";
     todoEditButton.classList.add("edit");
     todoEditButton.id = todo.id;
 
-    todoItemContainer.appendChild(todoItemCompleteButton);
+    todoItemContainer.appendChild(todoVisibleInformation);
+    todoVisibleInformation.appendChild(todoItemCompleteButton);
     todoVisibleInformation.appendChild(todoItemName);
     todoVisibleInformation.appendChild(todoDueDate);
-    todoItemContainer.appendChild(todoVisibleInformation);
+    todoVisibleInformation.appendChild(showMoreLess);
+    todoVisibleInformation.appendChild(todoEditButton);
+    
+    const todoDeleteButton = document.createElement("button");
+    todoDeleteButton.id = currentProject.id;
+    todoDeleteButton.classList.add("delete");
+    todoDeleteButton.textContent = "Delete";
+    todoVisibleInformation.appendChild(todoDeleteButton);
+
     todoItemContainer.appendChild(todoHiddenInformation);
     todoHiddenInformation.appendChild(todoDescription);
-    todoItemContainer.appendChild(todoEditButton);
+    todoHiddenInformation.append(priorityListed);
 
-    todoItemContainer.addEventListener("click", () => {
-        todoHiddenInformation.hidden = !todoHiddenInformation.hidden;
+    showMoreLess.addEventListener("click", () => {
+        if (showMoreLess.textContent === "Show Details") {
+            showMoreLess.textContent = "Hide Details";
+        } else {
+            showMoreLess.textContent = "Show Details";
+        }
+        if (todoHiddenInformation.style.display === "none") {
+            todoHiddenInformation.style.display = "flex";
+        } else {
+            todoHiddenInformation.style.display = "none";
+        }
     });
 
     todoEditButton.addEventListener("click", (event) => {
@@ -84,11 +109,6 @@ function renderCurrentTodoItem(todo) {
     let selectedTodoItem;
 
 //Delete button
-    const todoDeleteButton = document.createElement("button");
-    todoDeleteButton.id = currentProject.id;
-    todoDeleteButton.classList.add("delete");
-    todoDeleteButton.textContent = "Delete";
-    todoItemContainer.appendChild(todoDeleteButton);
 
     todoDeleteButton.addEventListener("click", () => {
         currentProject.deleteTodoItem(selectedTodoItem);
