@@ -32,7 +32,7 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.classList.add("todo-complete-button");
     todoItemCompleteButton.id = "complete-button";
 
-    const todoInformation = document.createElement("div");
+    const todoVisibleInformation = document.createElement("div");
 
     const todoItemName = document.createElement("p");
     todoItemName.classList.add("todo-list-item");
@@ -42,16 +42,27 @@ function renderCurrentTodoItem(todo) {
     todoDueDate.classList.add("todo-list-item");
     todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
 
+    const todoHiddenInformation = document.createElement("div");
+    todoHiddenInformation.classList.add("hidden-text");
+    const todoDescription = document.createElement("p");
+    todoDescription.textContent = `Description: ${todo.description}`;
+
     const todoEditButton = document.createElement("button");
     todoEditButton.textContent = "Edit";
     todoEditButton.classList.add("edit");
     todoEditButton.id = todo.id;
 
     todoItemContainer.appendChild(todoItemCompleteButton);
-    todoInformation.appendChild(todoItemName);
-    todoInformation.appendChild(todoDueDate);
-    todoItemContainer.appendChild(todoInformation);
+    todoVisibleInformation.appendChild(todoItemName);
+    todoVisibleInformation.appendChild(todoDueDate);
+    todoItemContainer.appendChild(todoVisibleInformation);
+    todoItemContainer.appendChild(todoHiddenInformation);
+    todoHiddenInformation.appendChild(todoDescription);
     todoItemContainer.appendChild(todoEditButton);
+
+    todoItemContainer.addEventListener("click", () => {
+        todoHiddenInformation.hidden = !todoHiddenInformation.hidden;
+    });
 
     todoEditButton.addEventListener("click", (event) => {
         todosEditModal.showModal();
