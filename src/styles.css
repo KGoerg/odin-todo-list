@@ -77,17 +77,36 @@ body {
   justify-content: center;
 }
 
+.todos-container {
+  margin-left: 20px;
+}
+
 .todo-item-container {
   display: flex;
-  margin: 10px;
+  flex-direction: column;
+}
+
+.visible-information {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.left-visible-info, .right-visible-info {
+  display: flex;
+}
+
+.left-visible-info {
+  flex-direction: column;
+}
+
+.hidden-information {
+  display: flex;
+  width: 60%;
 }
 
 #complete-button {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-}
-
-.todo-item-container button {
-  margin-left: 15px;
 }
