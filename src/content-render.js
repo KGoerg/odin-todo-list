@@ -35,6 +35,9 @@ function renderCurrentTodoItem(todo) {
     const todoVisibleInformation = document.createElement("div");
     todoVisibleInformation.classList.add("visible-information");
 
+    const leftTodoVisibleInformation = document.createElement("div");
+    leftTodoVisibleInformation.classList.add("left-visible-info");
+
     const todoItemName = document.createElement("p");
     todoItemName.classList.add("todo-list-item");
     todoItemName.textContent = `${todo.title}`;
@@ -42,6 +45,9 @@ function renderCurrentTodoItem(todo) {
     const todoDueDate = document.createElement("p");
     todoDueDate.classList.add("todo-list-item");
     todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
+
+    const rightTodoVisibleInformation = document.createElement("div");
+    rightTodoVisibleInformation.classList.add("right-visible-info");
 
     const todoHiddenInformation = document.createElement("div");
     todoHiddenInformation.classList.add("hidden-information");
@@ -58,19 +64,23 @@ function renderCurrentTodoItem(todo) {
     todoEditButton.textContent = "Edit";
     todoEditButton.classList.add("edit");
     todoEditButton.id = todo.id;
+    
+    todoItemContainer.appendChild(todoItemCompleteButton);
 
     todoItemContainer.appendChild(todoVisibleInformation);
-    todoVisibleInformation.appendChild(todoItemCompleteButton);
-    todoVisibleInformation.appendChild(todoItemName);
-    todoVisibleInformation.appendChild(todoDueDate);
-    todoVisibleInformation.appendChild(showMoreLess);
-    todoVisibleInformation.appendChild(todoEditButton);
+    todoVisibleInformation.appendChild(leftTodoVisibleInformation);
+    leftTodoVisibleInformation.appendChild(todoItemName);
+    leftTodoVisibleInformation.appendChild(todoDueDate);
+
+    todoVisibleInformation.appendChild(rightTodoVisibleInformation);
+    rightTodoVisibleInformation.appendChild(showMoreLess);
+    rightTodoVisibleInformation.appendChild(todoEditButton);
     
     const todoDeleteButton = document.createElement("button");
     todoDeleteButton.id = currentProject.id;
     todoDeleteButton.classList.add("delete");
     todoDeleteButton.textContent = "Delete";
-    todoVisibleInformation.appendChild(todoDeleteButton);
+    rightTodoVisibleInformation.appendChild(todoDeleteButton);
 
     todoItemContainer.appendChild(todoHiddenInformation);
     todoHiddenInformation.appendChild(todoDescription);
