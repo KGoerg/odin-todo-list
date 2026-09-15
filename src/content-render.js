@@ -113,7 +113,7 @@ function renderCurrentTodoItem(todo) {
             selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
             todoItemName.textContent = selectedTodoItem.title;
             todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
-        });
+        }, {once: true});
     });
 
     let selectedTodoItem;
