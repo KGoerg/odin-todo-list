@@ -23,6 +23,16 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     renderCurrentTodoItem(currentTodo);
 });
 
+function setCompleteButtonColor(todo, button) {
+    if (todo.priority === "high") {
+        button.style.backgroundColor = "red";
+    } else if (currentTodo.priority === "medium") {
+        button.style.backgroundColor = "yellow";
+    } else if (currentTodo.priority === "low") {
+        button.style.backgroundColor = "green";
+    };
+};
+
 function renderCurrentTodoItem(todo) {
     const todoItemContainer = document.createElement("div");
     todoItemContainer.classList.add("todo-item-container");
@@ -31,9 +41,6 @@ function renderCurrentTodoItem(todo) {
     const todoItemCompleteButton = document.createElement("button");
     todoItemCompleteButton.classList.add("todo-complete-button");
     todoItemCompleteButton.id = "complete-button";
-
-    const todoVisibleInformation = document.createElement("div");
-    todoVisibleInformation.classList.add("visible-information");
 
     const leftTodoVisibleInformation = document.createElement("div");
     leftTodoVisibleInformation.classList.add("left-visible-info");
@@ -57,6 +64,8 @@ function renderCurrentTodoItem(todo) {
     const priorityListed = document.createElement("p");
     priorityListed.textContent = `Priority Level: ${todo.priority}`;
 
+    setCompleteButtonColor(currentTodo, todoItemCompleteButton);
+
     const showMoreLess = document.createElement("button");
     showMoreLess.textContent = "Show Details";
 
@@ -67,12 +76,11 @@ function renderCurrentTodoItem(todo) {
     
     todoItemContainer.appendChild(todoItemCompleteButton);
 
-    todoItemContainer.appendChild(todoVisibleInformation);
-    todoVisibleInformation.appendChild(leftTodoVisibleInformation);
+    todoItemContainer.appendChild(leftTodoVisibleInformation);
     leftTodoVisibleInformation.appendChild(todoItemName);
     leftTodoVisibleInformation.appendChild(todoDueDate);
 
-    todoVisibleInformation.appendChild(rightTodoVisibleInformation);
+    todoItemContainer.appendChild(rightTodoVisibleInformation);
     rightTodoVisibleInformation.appendChild(showMoreLess);
     rightTodoVisibleInformation.appendChild(todoEditButton);
     
@@ -113,6 +121,7 @@ function renderCurrentTodoItem(todo) {
             selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
             todoItemName.textContent = selectedTodoItem.title;
             todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
+            setCompleteButtonColor(currentTodo, todoItemCompleteButton);
         }, {once: true});
     });
 
