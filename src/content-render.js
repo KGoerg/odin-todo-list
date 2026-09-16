@@ -123,7 +123,7 @@ function renderCurrentTodoItem(todo) {
     todoDeleteButton.addEventListener("click", () => {
         currentProject.deleteTodoItem(selectedTodoItem);
         console.log(currentProject.todoItemsArray);
-        todoDeleteButton.closest("div").remove();
+        todoDeleteButton.closest(".todo-item-container").remove();
     })
 };
 
