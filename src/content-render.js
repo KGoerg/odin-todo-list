@@ -61,8 +61,6 @@ function renderCurrentTodoItem(todo) {
     todoHiddenInformation.style.display = "none";
     const todoDescription = document.createElement("p");
     todoDescription.textContent = `Description: ${todo.description}`;
-    const priorityListed = document.createElement("p");
-    priorityListed.textContent = `Priority Level: ${todo.priority}`;
 
     setCompleteButtonColor(currentTodo, todoItemCompleteButton);
 
@@ -92,7 +90,6 @@ function renderCurrentTodoItem(todo) {
 
     todoItemContainer.appendChild(todoHiddenInformation);
     todoHiddenInformation.appendChild(todoDescription);
-    todoHiddenInformation.append(priorityListed);
 
     showMoreLess.addEventListener("click", () => {
         if (showMoreLess.textContent === "Show Details") {
