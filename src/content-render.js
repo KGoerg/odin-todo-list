@@ -43,9 +43,13 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.id = "complete-button";
 
     todoItemCompleteButton.addEventListener("click", () => {
-        todoItemContainer.style.backgroundColor = "rgba(42, 42, 42, 0.35)";
-        todoItemContainer.style.opacity = .5;
-    })
+        todoItemContainer.classList.toggle("grey-out-background");
+        // todoItemContainer.style.opacity = .5;
+        // let noOpacity = todoItemContainer.style.opacity = 1;
+        // let halfOpacity = todoItemContainer.style.opacity = .5;
+        // todoItemContainer.style.opacity = 1 ? todoItemContainer.style.opacity = .5 : todoItemContainer.style.opacity = 1;
+        todoItemContainer.classList.toggle("reduce-opacity");
+    });
 
     const leftTodoVisibleInformation = document.createElement("div");
     leftTodoVisibleInformation.classList.add("left-visible-info");

@@ -55,14 +55,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Project code begins */
 body {
-  background-color: rgb(195, 159, 231);
+  background-color: #FAFAFA;
   display: grid;
   grid-template-columns: 1fr 3fr;
   min-height: 100vh;
 }
 
 #sidebar {
-  background-color: #FAFAFA;
+  background-color: rgb(195, 159, 231);
   min-width: 300px;
   max-width: 500px;
 }
@@ -78,28 +78,38 @@ body {
 }
 
 .todos-container {
-  margin-left: 20px;
+  margin: 50px;
 }
 
 .todo-item-container {
   display: grid;
-  grid-template-columns: 25px 1fr;
+  grid-template-columns: 25px 1fr 1fr;
   margin: 20px 0 20px 0;
+  opacity: 1;
+  background-color: #FAFAFA;
+}
+
+.reduce-opacity {
+  opacity: .7;
+}
+
+.grey-out-background {
+  background-color: rgba(42, 42, 42, 0.35);
 }
 
 .visible-information {
-  display: flex;
+  /* display: flex; */
   width: 60%;
   justify-content: space-between;
-}
-
-.left-visible-info, .right-visible-info {
-  display: flex;
 }
 
 .left-visible-info {
   flex-direction: column;
   margin-left: 10px;
+}
+
+.right-visible-info {
+  display: flex;
 }
 
 .right-visible-info button {
@@ -113,10 +123,14 @@ body {
 
 .hidden-information {
   display: flex;
-  justify-content: space-between;
+  gap: 10rem;
   width: 60%;
-  grid-column: 2;
+  grid-column: 2 /span 2;
   margin-left: 10px;
+}
+
+.visible-information, .hidden-information {
+  width: 80%;
 }
 
 #complete-button {
