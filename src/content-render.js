@@ -42,6 +42,11 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.classList.add("todo-complete-button");
     todoItemCompleteButton.id = "complete-button";
 
+    todoItemCompleteButton.addEventListener("click", () => {
+        todoItemContainer.style.backgroundColor = "rgba(42, 42, 42, 0.35)";
+        todoItemContainer.style.opacity = .5;
+    })
+
     const leftTodoVisibleInformation = document.createElement("div");
     leftTodoVisibleInformation.classList.add("left-visible-info");
 
