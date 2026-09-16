@@ -118,6 +118,8 @@ function renderCurrentTodoItem(todo) {
             selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
             todoItemName.textContent = selectedTodoItem.title;
             todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
+            todoDescription.textContent = `Description: ${selectedTodoItem.description}`;
+
             setCompleteButtonColor(currentTodo, todoItemCompleteButton);
         }, {once: true});
     });
