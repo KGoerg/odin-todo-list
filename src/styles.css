@@ -84,9 +84,9 @@ body {
 .todo-item-container {
   display: grid;
   grid-template-columns: 25px .5fr 200px 1fr;
-  margin: 20px 0 20px 0;
+  padding: 15px 0 15px 0;
   opacity: 1;
-  background-color: #FAFAFA;
+  border-top: 1px dashed grey;
 }
 
 .reduce-opacity {
@@ -135,8 +135,8 @@ body {
 }
 
 #complete-button {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
   justify-self: center;
   align-self: center;
