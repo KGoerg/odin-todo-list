@@ -43,9 +43,19 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.id = "complete-button";
 
     todoItemCompleteButton.addEventListener("click", () => {
-        todoItemContainer.classList.toggle("grey-out-background");
-        todoItemContainer.classList.toggle("reduce-opacity");
+        leftTodoVisibleInformation.classList.toggle("reduce-opacity");
+        todoHiddenInformation.classList.toggle("reduce-opacity");
+        showMoreLess.classList.toggle("reduce-opacity")
+        todoEditButton.classList.toggle("reduce-opacity");
         todoItemName.classList.toggle("strike-through");todoDescription.classList.toggle("strike-through"); todoDueDate.classList.toggle("strike-through");
+    });
+
+    todoItemCompleteButton.addEventListener("mouseenter", () => {
+        todoItemCompleteButton.style.backgroundColor = "rgba(116, 116, 116, 1)";
+    });
+
+    todoItemCompleteButton.addEventListener("mouseleave", () => {
+        setCompleteButtonColor(currentTodo, todoItemCompleteButton);
     });
 
     const leftTodoVisibleInformation = document.createElement("div");
