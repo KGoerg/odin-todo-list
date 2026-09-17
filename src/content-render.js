@@ -45,6 +45,7 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.addEventListener("click", () => {
         todoItemContainer.classList.toggle("grey-out-background");
         todoItemContainer.classList.toggle("reduce-opacity");
+        todoItemName.classList.toggle("strike-through");todoDescription.classList.toggle("strike-through"); todoDueDate.classList.toggle("strike-through");
     });
 
     const leftTodoVisibleInformation = document.createElement("div");

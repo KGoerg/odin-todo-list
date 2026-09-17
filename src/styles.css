@@ -97,6 +97,10 @@ body {
   background-color: rgba(42, 42, 42, 0.35);
 }
 
+.strike-through {
+  text-decoration: line-through;
+}
+
 .visible-information {
   width: 60%;
   justify-content: space-between;
