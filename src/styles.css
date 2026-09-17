@@ -83,7 +83,7 @@ body {
 
 .todo-item-container {
   display: grid;
-  grid-template-columns: 25px 1fr 1fr;
+  grid-template-columns: 25px .5fr 200px 1fr;
   margin: 20px 0 20px 0;
   opacity: 1;
   background-color: #FAFAFA;
@@ -98,7 +98,6 @@ body {
 }
 
 .visible-information {
-  /* display: flex; */
   width: 60%;
   justify-content: space-between;
 }
@@ -110,6 +109,8 @@ body {
 
 .right-visible-info {
   display: flex;
+  gap: 10px;
+  justify-self: end;
 }
 
 .right-visible-info button {
@@ -125,7 +126,7 @@ body {
   display: flex;
   gap: 10rem;
   width: 60%;
-  grid-column: 2 /span 2;
+  grid-column: 2 / 5;
   margin-left: 10px;
 }
 
