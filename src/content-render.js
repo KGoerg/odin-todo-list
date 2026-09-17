@@ -25,11 +25,11 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
 
 function setCompleteButtonColor(todo, button) {
     if (todo.priority === "high") {
-        button.style.backgroundColor = "red";
+        button.style.backgroundColor = "rgba(213, 94, 0, 1)";
     } else if (currentTodo.priority === "medium") {
-        button.style.backgroundColor = "yellow";
+        button.style.backgroundColor = "rgba(240, 228, 66, 1)";
     } else if (currentTodo.priority === "low") {
-        button.style.backgroundColor = "green";
+        button.style.backgroundColor = "rgba(0, 158, 115, 1)";
     };
 };
 
@@ -44,10 +44,6 @@ function renderCurrentTodoItem(todo) {
 
     todoItemCompleteButton.addEventListener("click", () => {
         todoItemContainer.classList.toggle("grey-out-background");
-        // todoItemContainer.style.opacity = .5;
-        // let noOpacity = todoItemContainer.style.opacity = 1;
-        // let halfOpacity = todoItemContainer.style.opacity = .5;
-        // todoItemContainer.style.opacity = 1 ? todoItemContainer.style.opacity = .5 : todoItemContainer.style.opacity = 1;
         todoItemContainer.classList.toggle("reduce-opacity");
     });
 
