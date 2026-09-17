@@ -90,11 +90,7 @@ body {
 }
 
 .reduce-opacity {
-  opacity: .7;
-}
-
-.grey-out-background {
-  background-color: rgba(42, 42, 42, 0.35);
+  opacity: .5;
 }
 
 .strike-through {
