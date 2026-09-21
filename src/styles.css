@@ -96,15 +96,17 @@ body {
 }
 
 .project {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  justify-content: space-between;
 }
 
 .project:hover {
   background-color: rgb(220, 207, 233);
 }
 
-.project button:nth-child(1) {
+.project-header {
+  text-align: left;
+  flex: 1;
   justify-self: left;
   background:none;
   border:none;
