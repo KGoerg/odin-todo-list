@@ -9,7 +9,7 @@
     <div id="sidebar">
         <div class="sidebar-header">
             <h1>My Projects</h1>
-            <button command="show-modal" id="add-new-project" commandfor="new-dialog">New Project</button>
+            <button command="show-modal" id="add-new-project" commandfor="new-dialog">+</button>
         </div>
         <div class="dialog">
             <dialog id="new-dialog" closedby="any">
@@ -18,7 +18,7 @@
                     <label for="project_name">Project Name</label>
                     <input type="text" id="project_name" name="project_name" required>
 
-                    <label for="project_description">Project Description:</label>
+                    <label for="project_description">Project Description (Optional):</label>
                     <input type="text" id="project_description" name="project_description">
 
                     <button type="submit" id="project-submit">Submit</button>
