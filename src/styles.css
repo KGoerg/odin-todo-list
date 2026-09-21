@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bpmf+Huninn&display=swap');
+
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -65,16 +67,50 @@ body {
   background-color: rgb(195, 159, 231);
   min-width: 300px;
   max-width: 500px;
-}
-
-#sidebar h1 {
-  text-align: center;
+  padding-left: 20px;
+  padding: 20px;
 }
 
 .sidebar-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.sidebar-header h1 {
+  min-width: 170px;
+}
+
+.sidebar-header button {
+  width: 30px;
+  height: 30px;
+  justify-self: end;
+  align-self: center;
+  font-weight: bold;
+}
+
+.projects-container {
+  margin-top: 20px;
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.project:hover {
+  background-color: rgb(220, 207, 233);
+}
+
+.project button:nth-child(1) {
+  justify-self: left;
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
 }
 
 .todos-container {
@@ -139,9 +175,13 @@ body {
 }
 
 #complete-button {
-  height: 25px;
-  width: 25px;
+  height: 28px;
+  width: 28px;
   border-radius: 50%;
   justify-self: center;
   align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
 }
