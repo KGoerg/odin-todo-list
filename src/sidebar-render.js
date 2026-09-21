@@ -21,6 +21,10 @@ export function renderProjectButtons(project) {
     newProjectHeader.textContent = project.title;
     newProjectContainer.appendChild(newProjectHeader);
 
+    const sidebarButtonsContainer = document.createElement("div");
+    sidebarButtonsContainer.classList.add("sidebar-buttons-container");
+    newProjectContainer.appendChild(sidebarButtonsContainer);
+
     //Project button functionality
     newProjectHeader.addEventListener("click", () => {
       renderContent(project); 
@@ -35,7 +39,7 @@ export function renderProjectButtons(project) {
     editButton.classList.add("edit");
     editButton.textContent = "Edit";
     editButtonsArray.push(editButton);
-    newProjectContainer.appendChild(editButton);
+    sidebarButtonsContainer.appendChild(editButton);
     // console.log(editButtonsArray);
 
     editButton.addEventListener("click", (event) => {
@@ -63,7 +67,7 @@ export function renderProjectButtons(project) {
     deleteButton.classList.add("delete");
     deleteButton.textContent = "Delete";
     deleteButtonsArray.push(deleteButton);
-    newProjectContainer.appendChild(deleteButton);
+    sidebarButtonsContainer.appendChild(deleteButton);
 
     deleteButton.addEventListener("click", (event) => {
       //Remove project from Projects.allProjects array
