@@ -43,6 +43,12 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.id = "complete-button";
 
     todoItemCompleteButton.addEventListener("click", () => {
+        if (todoItemCompleteButton.textContent === "") {
+            todoItemCompleteButton.textContent = "✓";
+        } else if (todoItemCompleteButton.textContent === "✓") {
+            todoItemCompleteButton.textContent = "";
+        };
+
         leftTodoVisibleInformation.classList.toggle("reduce-opacity");
         todoHiddenInformation.classList.toggle("reduce-opacity");
         showMoreLess.classList.toggle("reduce-opacity")
@@ -51,13 +57,11 @@ function renderCurrentTodoItem(todo) {
     });
 
     todoItemCompleteButton.addEventListener("mouseenter", () => {
-        todoItemCompleteButton.style.backgroundColor = "#FAFAFA";
-        todoItemCompleteButton.textContent = "✓";
+        todoItemCompleteButton.style.backgroundColor = "rgb(165, 165, 165)";
     });
 
     todoItemCompleteButton.addEventListener("mouseleave", () => {
         setCompleteButtonColor(currentTodo, todoItemCompleteButton);
-        todoItemCompleteButton.textContent = "";
     });
 
     const leftTodoVisibleInformation = document.createElement("div");
