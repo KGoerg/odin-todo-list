@@ -51,11 +51,13 @@ function renderCurrentTodoItem(todo) {
     });
 
     todoItemCompleteButton.addEventListener("mouseenter", () => {
-        todoItemCompleteButton.style.backgroundColor = "rgba(116, 116, 116, 1)";
+        todoItemCompleteButton.style.backgroundColor = "#FAFAFA";
+        todoItemCompleteButton.textContent = "✓";
     });
 
     todoItemCompleteButton.addEventListener("mouseleave", () => {
         setCompleteButtonColor(currentTodo, todoItemCompleteButton);
+        todoItemCompleteButton.textContent = "";
     });
 
     const leftTodoVisibleInformation = document.createElement("div");
