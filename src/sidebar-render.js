@@ -19,6 +19,7 @@ export function renderProjectButtons(project) {
 
     const newProjectHeader = document.createElement("button");
     newProjectHeader.textContent = project.title;
+    newProjectHeader.classList.add("project-header");
     newProjectContainer.appendChild(newProjectHeader);
 
     const sidebarButtonsContainer = document.createElement("div");
@@ -75,7 +76,7 @@ export function renderProjectButtons(project) {
       selectedProject.deleteProject(selectedProject);
       console.log(Project.allProjects);
       //Remove div from DOM
-      deleteButton.closest("div").remove();
+      deleteButton.closest(".project").remove();
       //Remove rendered content
       deleteRenderedContent(deleteButton, contentContainer);
     })
