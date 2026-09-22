@@ -3,10 +3,10 @@ import { projectTitle, projectDescription, renderContent, deleteRenderedContent,
 import { TodoItem } from "./todos.js";
 
 const projectsContainer = document.querySelector(".projects-container");
-let editButtonsArray = [];
-const editButtonModal = document.querySelector("#edit-project");
+let sidebarEditButtonsArray = [];
+const sidebarEditButtonModal = document.querySelector("#edit-project");
 
-let deleteButtonsArray = [];
+let sidebarDeleteButtonsArray = [];
 export let currentProject;
 
 //Creates DOM buttons for project's name, edit, and delete
@@ -35,20 +35,19 @@ export function renderProjectButtons(project) {
     });
 
     // Add edit buttons & functionality
-    const editButton = document.createElement("button");
-    editButton.id = project.id;
-    editButton.classList.add("edit");
-    editButton.textContent = "Edit";
-    editButtonsArray.push(editButton);
-    sidebarButtonsContainer.appendChild(editButton);
-    // console.log(editButtonsArray);
+    const sidebarEditButton = document.createElement("button");
+    sidebarEditButton.id = project.id;
+    sidebarEditButton.classList.add("edit");
+    sidebarEditButton.textContent = "Edit";
+    sidebarEditButtonsArray.push(sidebarEditButton);
+    sidebarButtonsContainer.appendChild(sidebarEditButton);
 
-    editButton.addEventListener("click", (event) => {
-      editButtonModal.showModal();
+    sidebarEditButton.addEventListener("click", (event) => {
+      sidebarEditButtonModal.showModal();
 
     //Running into a bug where the edit button is editing multiple projects at once. Once a project has been edited, it seems to be stuck in edit mode.
-    const editSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
-      let selectedProject = Project.allProjects.find(element => element.id === editButton.id);
+    const sidebarEditSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
+      let selectedProject = Project.allProjects.find(element => element.id === sidebarEditButton.id);
       let newFormTitle = document.getElementById("new_project_name").value;
       let newFormDescription = document.getElementById("new_project_description").value;
       selectedProject.editProject(newFormTitle, newFormDescription);
@@ -63,22 +62,22 @@ export function renderProjectButtons(project) {
     });
 
     // Add delete buttons
-    const deleteButton = document.createElement("button");
-    deleteButton.id = project.id;
-    deleteButton.classList.add("delete");
-    deleteButton.textContent = "Delete";
-    deleteButtonsArray.push(deleteButton);
-    sidebarButtonsContainer.appendChild(deleteButton);
+    const sidebarDeleteButton = document.createElement("button");
+    sidebarDeleteButton.id = project.id;
+    sidebarDeleteButton.classList.add("delete");
+    sidebarDeleteButton.textContent = "Delete";
+    sidebarDeleteButtonsArray.push(sidebarDeleteButton);
+    sidebarButtonsContainer.appendChild(sidebarDeleteButton);
 
-    deleteButton.addEventListener("click", (event) => {
+    sidebarDeleteButton.addEventListener("click", (event) => {
       //Remove project from Projects.allProjects array
-      let selectedProject = Project.allProjects.find(element => element.id === deleteButton.id);
+      let selectedProject = Project.allProjects.find(element => element.id === sidebarDeleteButton.id);
       selectedProject.deleteProject(selectedProject);
       console.log(Project.allProjects);
       //Remove div from DOM
-      deleteButton.closest(".project").remove();
+      sidebarDeleteButton.closest(".project").remove();
       //Remove rendered content
-      deleteRenderedContent(deleteButton, contentContainer);
+      deleteRenderedContent(sidebarDeleteButton, contentContainer);
     })
 };
 
