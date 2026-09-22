@@ -9,6 +9,7 @@ export let projectDescription = document.createElement("h2");
 
 const todosContainer = document.querySelector(".todos-container");
 let currentTodo;
+
 //Get data from the todos form and create a new todo item
 const todosFormSubmitButton = document.getElementById("todos-submit").addEventListener("click", function(event) {
     const todosFormTitle = document.getElementById("todo_name").value;
@@ -23,6 +24,7 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     renderCurrentTodoItem(currentTodo);
 });
 
+//Function to set the todo item's complete button color to reflect whatever priority level it has
 function setCompleteButtonColor(todo, button) {
     if (todo.priority === "high") {
         button.style.backgroundColor = "rgba(213, 94, 0, 1)";
@@ -33,6 +35,7 @@ function setCompleteButtonColor(todo, button) {
     };
 };
 
+//Renders todo items to the page along with complete button, show more/less, and edit and delete buttons
 function renderCurrentTodoItem(todo) {
     const todoItemContainer = document.createElement("div");
     todoItemContainer.classList.add("todo-item-container");
@@ -42,6 +45,10 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.classList.add("todo-complete-button");
     todoItemCompleteButton.id = "complete-button";
 
+    //Sets button color depending on priority level
+    setCompleteButtonColor(currentTodo, todoItemCompleteButton);
+
+    //Adds functionality to complete button on-click
     todoItemCompleteButton.addEventListener("click", () => {
         if (todoItemCompleteButton.textContent === "") {
             todoItemCompleteButton.textContent = "✓";
@@ -56,14 +63,15 @@ function renderCurrentTodoItem(todo) {
         todoItemName.classList.toggle("strike-through");todoDescription.classList.toggle("strike-through"); todoDueDate.classList.toggle("strike-through");
     });
 
+    //Changes color of complete button on mouseenter/mouseleave
     todoItemCompleteButton.addEventListener("mouseenter", () => {
         todoItemCompleteButton.style.backgroundColor = "rgb(165, 165, 165)";
     });
-
     todoItemCompleteButton.addEventListener("mouseleave", () => {
         setCompleteButtonColor(currentTodo, todoItemCompleteButton);
     });
 
+    //Separates visible todo item information into left and right sides for styling purposes
     const leftTodoVisibleInformation = document.createElement("div");
     leftTodoVisibleInformation.classList.add("left-visible-info");
 
@@ -78,40 +86,16 @@ function renderCurrentTodoItem(todo) {
     const rightTodoVisibleInformation = document.createElement("div");
     rightTodoVisibleInformation.classList.add("right-visible-info");
 
+    //Sets up "hidden" info for todos that will appear on a "Show More" button click
     const todoHiddenInformation = document.createElement("div");
     todoHiddenInformation.classList.add("hidden-information");
     todoHiddenInformation.style.display = "none";
     const todoDescription = document.createElement("p");
     todoDescription.textContent = `Description: ${todo.description}`;
 
-    setCompleteButtonColor(currentTodo, todoItemCompleteButton);
-
+    //Creates and sets up event listener for "Show More/Less"
     const showMoreLess = document.createElement("button");
     showMoreLess.textContent = "Show Details";
-
-    const todoEditButton = document.createElement("button");
-    todoEditButton.textContent = "Edit";
-    todoEditButton.classList.add("edit");
-    todoEditButton.id = todo.id;
-    
-    todoItemContainer.appendChild(todoItemCompleteButton);
-
-    todoItemContainer.appendChild(leftTodoVisibleInformation);
-    leftTodoVisibleInformation.appendChild(todoItemName);
-    leftTodoVisibleInformation.appendChild(todoDueDate);
-
-    todoItemContainer.appendChild(rightTodoVisibleInformation);
-    rightTodoVisibleInformation.appendChild(showMoreLess);
-    rightTodoVisibleInformation.appendChild(todoEditButton);
-    
-    const todoDeleteButton = document.createElement("button");
-    todoDeleteButton.id = currentProject.id;
-    todoDeleteButton.classList.add("delete");
-    todoDeleteButton.textContent = "Delete";
-    rightTodoVisibleInformation.appendChild(todoDeleteButton);
-
-    todoItemContainer.appendChild(todoHiddenInformation);
-    todoHiddenInformation.appendChild(todoDescription);
 
     showMoreLess.addEventListener("click", () => {
         if (showMoreLess.textContent === "Show Details") {
@@ -125,6 +109,12 @@ function renderCurrentTodoItem(todo) {
             todoHiddenInformation.style.display = "none";
         }
     });
+
+    //Creates and gives functionality to edit button and its submit button
+    const todoEditButton = document.createElement("button");
+    todoEditButton.textContent = "Edit";
+    todoEditButton.classList.add("edit");
+    todoEditButton.id = todo.id;
 
     todoEditButton.addEventListener("click", (event) => {
         todosEditModal.showModal();
@@ -145,16 +135,35 @@ function renderCurrentTodoItem(todo) {
             setCompleteButtonColor(currentTodo, todoItemCompleteButton);
         }, {once: true});
     });
+    
+    //Attached complete button, left and right side visible info, todo item buttons, and hidden info, to the DOM
+    todoItemContainer.appendChild(todoItemCompleteButton);
 
-    let selectedTodoItem;
+    todoItemContainer.appendChild(leftTodoVisibleInformation);
+    leftTodoVisibleInformation.appendChild(todoItemName);
+    leftTodoVisibleInformation.appendChild(todoDueDate);
 
-//Delete button
+    todoItemContainer.appendChild(rightTodoVisibleInformation);
+    rightTodoVisibleInformation.appendChild(showMoreLess);
+    rightTodoVisibleInformation.appendChild(todoEditButton);
+    
+    const todoDeleteButton = document.createElement("button");
+    todoDeleteButton.id = currentProject.id;
+    todoDeleteButton.classList.add("delete");
+    todoDeleteButton.textContent = "Delete";
+    rightTodoVisibleInformation.appendChild(todoDeleteButton);
 
+    //Delete button functionality
     todoDeleteButton.addEventListener("click", () => {
         currentProject.deleteTodoItem(selectedTodoItem);
         console.log(currentProject.todoItemsArray);
         todoDeleteButton.closest(".todo-item-container").remove();
     })
+
+    todoItemContainer.appendChild(todoHiddenInformation);
+    todoHiddenInformation.appendChild(todoDescription);
+
+    let selectedTodoItem;
 };
 
 const todosModal = document.querySelector("#todo-dialog");
@@ -189,6 +198,7 @@ export function renderContent(project) {
     })
 };
 
+//Deletes rendered content
 export function deleteRenderedContent(deleter, container) {
     console.log(deleter.id);
     console.log(container.id);
