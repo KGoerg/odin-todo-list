@@ -45,7 +45,7 @@ export function renderProjectButtons(project) {
     sidebarEditButton.addEventListener("click", (event) => {
       sidebarEditButtonModal.showModal();
 
-    //Running into a bug where the edit button is editing multiple projects at once. Once a project has been edited, it seems to be stuck in edit mode.
+    //Gives Edit buttons functionality
     const sidebarEditSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
       let selectedProject = Project.allProjects.find(element => element.id === sidebarEditButton.id);
       let newFormTitle = document.getElementById("new_project_name").value;
@@ -69,6 +69,7 @@ export function renderProjectButtons(project) {
     sidebarDeleteButtonsArray.push(sidebarDeleteButton);
     sidebarButtonsContainer.appendChild(sidebarDeleteButton);
 
+    //Gives Delete buttons functionality
     sidebarDeleteButton.addEventListener("click", (event) => {
       //Remove project from Projects.allProjects array
       let selectedProject = Project.allProjects.find(element => element.id === sidebarDeleteButton.id);
