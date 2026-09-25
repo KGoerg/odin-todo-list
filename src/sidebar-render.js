@@ -1,6 +1,7 @@
 import { Project } from "./projects.js";
 import { projectTitle, projectDescription, renderContent, deleteRenderedContent, contentContainer} from "./content-render.js";
 import { TodoItem } from "./todos.js";
+import { saveProjectArray, deleteProjectStorage } from "./localstorage.js";
 
 const projectsContainer = document.querySelector(".projects-container");
 let sidebarEditButtonsArray = [];
@@ -8,16 +9,6 @@ const sidebarEditButtonModal = document.querySelector("#edit-project");
 
 let sidebarDeleteButtonsArray = [];
 export let currentProject;
-
-//Local storage function for projects
-export function saveProjectArray(arrayName, array) {
-  localStorage.setItem(arrayName, JSON.stringify(array));
-};
-
-function removeProjectStorage(projectName, project) {
-  localStorage.removeItem(projectName, project);
-  saveProjectArray("projects", Project.allProjects);
-};
 
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
@@ -60,10 +51,9 @@ export function renderProjectButtons(project) {
       let selectedProject = Project.allProjects.find(element => element.id === sidebarEditButton.id);
       let newFormTitle = document.getElementById("new_project_name").value;
       let newFormDescription = document.getElementById("new_project_description").value;
-      removeProjectStorage(selectedProject.title, project);
+      deleteProjectStorage(selectedProject.title, project);
       selectedProject.editProject(newFormTitle, newFormDescription);
       newProjectHeader.textContent = selectedProject.title;
-      // saveProject(selectedProject.title, selectedProject);
       if (projectTitle.textContent === "") {
         projectTitle.textContent = selectedProject.title;
       }
@@ -87,7 +77,7 @@ export function renderProjectButtons(project) {
       //Remove project from Projects.allProjects array
       let selectedProject = Project.allProjects.find(element => element.id === sidebarDeleteButton.id);
       selectedProject.deleteProject(selectedProject);
-      removeProjectStorage(selectedProject.title, selectedProject);
+      deleteProjectStorage(selectedProject.title, selectedProject);
       console.log(Project.allProjects);
       //Remove div from DOM
       sidebarDeleteButton.closest(".project").remove();
@@ -104,7 +94,6 @@ export const newProjectSubmitButton = document.getElementById("project-submit").
     alert("You must enter a Project Name");
   } else {
     const newProject = new Project(projectFormTitle, projectFormDescription);
-    // saveProject(projectFormTitle, newProject);
     saveProjectArray("projects", Project.allProjects);
     renderProjectButtons(newProject);
     console.log(Project.allProjects);
