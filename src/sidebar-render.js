@@ -1,7 +1,7 @@
 import { Project } from "./projects.js";
 import { projectTitle, projectDescription, renderContent, deleteRenderedContent, contentContainer} from "./content-render.js";
 import { TodoItem } from "./todos.js";
-import { saveProjectArray, deleteProjectStorage } from "./localstorage.js";
+import { saveProjectArray, deleteProjectStorage, savedProjectArray, rehydratedProjectsArray} from "./localstorage.js";
 
 const projectsContainer = document.querySelector(".projects-container");
 let sidebarEditButtonsArray = [];
@@ -9,6 +9,14 @@ const sidebarEditButtonModal = document.querySelector("#edit-project");
 
 let sidebarDeleteButtonsArray = [];
 export let currentProject;
+
+//This function renders the sidebar on pageload, but it's causing issues where functions tied to the buttons of the rendered projects no longer work. I suspect it's because the data is being pulled from localstorage and not the array on the page, as newly added projects (not loaded from localstorage) work just fine.
+document.addEventListener("DOMContentLoaded", () => {
+  saveProjectArray("projects", Project.allProjects);
+  rehydratedProjectsArray.forEach(project => {
+    renderProjectButtons(project);
+  })
+});
 
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
