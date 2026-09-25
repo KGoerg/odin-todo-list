@@ -10,12 +10,13 @@ let sidebarDeleteButtonsArray = [];
 export let currentProject;
 
 //Local storage function for projects
-function saveProject(projectName, project) {
-  localStorage.setItem(projectName, JSON.stringify(project));
+export function saveProjectArray(arrayName, array) {
+  localStorage.setItem(arrayName, JSON.stringify(array));
 };
 
 function removeProjectStorage(projectName, project) {
   localStorage.removeItem(projectName, project);
+  saveProjectArray("projects", Project.allProjects);
 };
 
 //Creates DOM buttons for project's name, edit, and delete
@@ -59,15 +60,17 @@ export function renderProjectButtons(project) {
       let selectedProject = Project.allProjects.find(element => element.id === sidebarEditButton.id);
       let newFormTitle = document.getElementById("new_project_name").value;
       let newFormDescription = document.getElementById("new_project_description").value;
+      removeProjectStorage(selectedProject.title, project);
       selectedProject.editProject(newFormTitle, newFormDescription);
       newProjectHeader.textContent = selectedProject.title;
-      saveProject(newFormTitle, selectedProject);
+      // saveProject(selectedProject.title, selectedProject);
       if (projectTitle.textContent === "") {
         projectTitle.textContent = selectedProject.title;
       }
       if (projectDescription.textContent === "") {
         projectDescription.textContent = selectedProject.description;
       }
+      saveProjectArray("projects", Project.allProjects);
       }, { once: true});
     });
 
@@ -101,7 +104,8 @@ export const newProjectSubmitButton = document.getElementById("project-submit").
     alert("You must enter a Project Name");
   } else {
     const newProject = new Project(projectFormTitle, projectFormDescription);
-    saveProject(projectFormTitle, newProject);
+    // saveProject(projectFormTitle, newProject);
+    saveProjectArray("projects", Project.allProjects);
     renderProjectButtons(newProject);
     console.log(Project.allProjects);
 }});
