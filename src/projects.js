@@ -6,11 +6,13 @@ let deletedProjectsArray = [];
 
 class Project {
     static allProjects = [];
+    static nextId = 0;
 
     constructor(title, description) {
         this.title = title;
         this.description = description;
-        this.id = crypto.randomUUID();
+        this.id = Project.nextId++;
+        this.id = String(this.id);
         this.todoItemsArray = [];
         Project.allProjects.push(this);
     }
