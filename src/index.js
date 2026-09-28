@@ -2,14 +2,18 @@
 import "./styles.css";
 import {deletedTodoItemsArray, completedTodoItemsArray, deletedProjectsArray, Project} from "./projects.js";
 import {TodoItem} from "./todos.js";
-import {renderProjectButtons } from "./sidebar-render.js";
+import {renderProjectButtons, saveProject } from "./sidebar-render.js";
 import { renderContent } from "./content-render.js";
 
 //Testing
 const defaultProject = new Project("Default Project", "A default space to put any tasks you haven't sorted yet!");
 
-renderProjectButtons(defaultProject);
+// renderProjectButtons(defaultProject);
+
 console.log(Project.allProjects);
+
+// localStorage.clear();
+
 // let editButtonArray = document.querySelectorAll(".edit");
 // console.log(editButtonArray);
 
