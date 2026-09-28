@@ -11,6 +11,7 @@ let sidebarDeleteButtonsArray = [];
 export let currentProject;
 
 //This function renders the sidebar on pageload, but it's causing issues where functions tied to the buttons of the rendered projects no longer work. I suspect it's because the data is being pulled from localstorage and not the array on the page, as newly added projects (not loaded from localstorage) work just fine.
+//A big issue is that the buttons are pulling from class methods for these projects, which the rehydrated array of projects does not have access to.
 document.addEventListener("DOMContentLoaded", () => {
   saveProjectArray("projects", Project.allProjects);
   rehydratedProjectsArray.forEach(project => {
