@@ -39,9 +39,8 @@ export function renderProjectButtons(project) {
     //Project button functionality
     newProjectHeader.addEventListener("click", () => {
       renderContent(project); 
-      currentProject = project;
+      currentProject = Project.allProjects.find(element => element.id === newProjectContainer.id);
       contentContainer.id = project.id;
-      console.log(contentContainer);
     });
 
     // Add edit buttons & functionality
