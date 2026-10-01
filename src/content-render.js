@@ -23,7 +23,8 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     currentTodo = newTodo;
     newTodo.id;
     currentProject.addTodoItem(newTodo);
-    // saveProjectArray("projects", Project.allProjects);
+    console.log(currentProject.todoItemsArray);
+    saveProjectArray(currentProject.title, currentProject.todoItemsArray);
     renderCurrentTodoItem(currentTodo);
 });
 
