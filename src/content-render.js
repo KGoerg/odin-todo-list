@@ -1,6 +1,8 @@
 import { TodoItem , formatDate} from "./todos.js";
 import { currentProject } from "./sidebar-render.js";
 import {format} from 'date-fns';
+import { saveProjectArray } from "./localstorage.js";
+import { Project } from "./projects.js";
 
 export const contentContainer = document.querySelector("#content");
 
@@ -21,6 +23,7 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     currentTodo = newTodo;
     newTodo.id;
     currentProject.addTodoItem(newTodo);
+    // saveProjectArray("projects", Project.allProjects);
     renderCurrentTodoItem(currentTodo);
 });
 
@@ -206,5 +209,6 @@ export function deleteRenderedContent(deleter, container) {
             projectTitle.textContent = "";
             projectDescription.textContent = "";
             contentContainer.removeChild(newTodoButton);
+            contentContainer.removeChild(todosContainer);
         }
 };
