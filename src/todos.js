@@ -2,12 +2,15 @@
 import {format} from 'date-fns';
 
 export class TodoItem {
+
+    static nextId = 0;
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.id = crypto.randomUUID();
+        this.id = TodoItem.nextId++;
+        this.id = String(this.id);
     }
     editTodoItem(newTitle, newDescription, newDueDate, newPriority) {
         if (newTitle === "") {
