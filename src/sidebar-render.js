@@ -10,13 +10,20 @@ const sidebarEditButtonModal = document.querySelector("#edit-project");
 let sidebarDeleteButtonsArray = [];
 export let currentProject;
 
-//This function renders the sidebar on pageload, but it's causing issues where functions tied to the buttons of the rendered projects no longer work. I suspect it's because the data is being pulled from localstorage and not the array on the page, as newly added projects (not loaded from localstorage) work just fine.
-//A big issue is that the buttons are pulling from class methods for these projects, which the rehydrated array of projects does not have access to.
-document.addEventListener("DOMContentLoaded", () => {
+//Need to fix this. If saveProjectArray() is included on renderLoad, it causes the issue where refreshing the page eventually drops what's saved in localstorage. However, leaving this as-is means Default Project doesn't render until the page is refreshed.
+function saveDefaultProject() {
+  const defaultProject = new Project("Default Project", "A default space to put any tasks you haven't sorted yet!");
+  saveProjectArray("projects", Project.allProjects);
+}
+saveDefaultProject();
+
+function renderOnLoad() {
   rehydratedProjectsArray.forEach(project => {
-    renderProjectButtons(project);
-  })
-});
+  renderProjectButtons(project);
+})};
+
+renderOnLoad();
+
 
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
@@ -39,7 +46,7 @@ export function renderProjectButtons(project) {
     newProjectHeader.addEventListener("click", () => {
       renderContent(project); 
       currentProject = Project.allProjects.find(element => element.id === newProjectContainer.id);
-      contentContainer.id = project.id;
+      // contentContainer.id = project.id;
     });
 
     // Add edit buttons & functionality
