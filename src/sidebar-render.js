@@ -11,14 +11,15 @@ let sidebarDeleteButtonsArray = [];
 export let currentProject;
 
 //Need to fix this. If saveProjectArray() is included on renderLoad, it causes the issue where refreshing the page eventually drops what's saved in localstorage. However, leaving this as-is means Default Project doesn't render until the page is refreshed.
-function saveDefaultProject() {
-  const defaultProject = new Project("Default Project", "A default space to put any tasks you haven't sorted yet!");
-  saveProjectArray("projects", Project.allProjects);
-}
-saveDefaultProject();
+// function saveDefaultProject() {
+//   const defaultProject = new Project("Default Project", "A default space to put any tasks you haven't sorted yet!");
+//   saveProjectArray("projects", Project.allProjects);
+// }
+// saveDefaultProject();
 
 function renderOnLoad() {
   rehydratedProjectsArray.forEach(project => {
+  new Project(project.title, project.description);
   renderProjectButtons(project);
 })};
 
@@ -46,7 +47,7 @@ export function renderProjectButtons(project) {
     newProjectHeader.addEventListener("click", () => {
       renderContent(project); 
       currentProject = Project.allProjects.find(element => element.id === newProjectContainer.id);
-      // contentContainer.id = project.id;
+      contentContainer.id = project.id;
     });
 
     // Add edit buttons & functionality
