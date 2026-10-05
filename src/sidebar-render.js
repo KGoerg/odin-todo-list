@@ -20,19 +20,20 @@ export let currentProject;
 function renderOnLoad() {
   if (rehydratedProjectsArray !== null) {
     rehydratedProjectsArray.forEach(project => {
-      let renderedLocalStorageProject = new Project(project.title, project.description);
-      renderProjectButtons(renderedLocalStorageProject);
+      let loadLocalStorageProject = new Project(project.title, project.description);
       //Gets todo-array for this specific project. I want to get the todos from the project and push it to the array from the class.
       console.log(rehydratedProjectsArray);
       //Figured out how to get the todos array from localstorage for each project!
       let savedProjectTodos = project.todoItemsArray;
-      renderedLocalStorageProject.todoItemsArray.push(...savedProjectTodos);
-    })
-  }
+      console.log(savedProjectTodos);
+      console.log(loadLocalStorageProject);
+      loadLocalStorageProject.todoItemsArray.push(...savedProjectTodos);
+      renderProjectButtons(loadLocalStorageProject);
+      })
+    }
   };
 
 renderOnLoad();
-
 
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
