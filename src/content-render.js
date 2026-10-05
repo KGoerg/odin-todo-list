@@ -24,7 +24,7 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     newTodo.id;
     currentProject.addTodoItem(newTodo);
     console.log(currentProject.todoItemsArray);
-    saveProjectArray(currentProject.title, currentProject.todoItemsArray);
+    console.log(saveProjectArray("projects", Project.allProjects));
     renderCurrentTodoItem(currentTodo);
 });
 
@@ -50,7 +50,7 @@ function renderCurrentTodoItem(todo) {
     todoItemCompleteButton.id = "complete-button";
 
     //Sets button color depending on priority level
-    setCompleteButtonColor(currentTodo, todoItemCompleteButton);
+    setCompleteButtonColor(todo, todoItemCompleteButton);
 
     //Adds functionality to complete button on-click
     todoItemCompleteButton.addEventListener("click", () => {
