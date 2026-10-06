@@ -32,9 +32,9 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
 function setCompleteButtonColor(todo, button) {
     if (todo.priority === "high") {
         button.style.backgroundColor = "rgba(213, 94, 0, 1)";
-    } else if (currentTodo.priority === "medium") {
+    } else if (todo.priority === "medium") {
         button.style.backgroundColor = "rgba(240, 228, 66, 1)";
-    } else if (currentTodo.priority === "low") {
+    } else if (todo.priority === "low") {
         button.style.backgroundColor = "rgba(0, 158, 115, 1)";
     };
 };
@@ -72,7 +72,7 @@ function renderCurrentTodoItem(todo) {
         todoItemCompleteButton.style.backgroundColor = "rgb(165, 165, 165)";
     });
     todoItemCompleteButton.addEventListener("mouseleave", () => {
-        setCompleteButtonColor(currentTodo, todoItemCompleteButton);
+        setCompleteButtonColor(todo, todoItemCompleteButton);
     });
 
     //Separates visible todo item information into left and right sides for styling purposes
@@ -124,6 +124,7 @@ function renderCurrentTodoItem(todo) {
         todosEditModal.showModal();
         const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
             selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
+            console.log(selectedTodoItem);
             let newTodoTitle = document.getElementById("new_todo_name").value;
             let newTodoDescription = document.getElementById("new_todo_description").value;
             let newTodoDueDate = document.getElementById("new_todo_due_date").value;
@@ -136,7 +137,7 @@ function renderCurrentTodoItem(todo) {
             todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
             todoDescription.textContent = `Description: ${selectedTodoItem.description}`;
 
-            setCompleteButtonColor(currentTodo, todoItemCompleteButton);
+            setCompleteButtonColor(todo, todoItemCompleteButton);
         }, {once: true});
     });
     
@@ -152,7 +153,7 @@ function renderCurrentTodoItem(todo) {
     rightTodoVisibleInformation.appendChild(todoEditButton);
     
     const todoDeleteButton = document.createElement("button");
-    todoDeleteButton.id = currentProject.id;
+    todoDeleteButton.id = todo.id;
     todoDeleteButton.classList.add("delete");
     todoDeleteButton.textContent = "Delete";
     rightTodoVisibleInformation.appendChild(todoDeleteButton);
