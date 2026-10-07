@@ -25,7 +25,7 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     currentProject.addTodoItem(newTodo);
     console.log(currentProject.todoItemsArray);
     console.log(saveProjectArray("projects", Project.allProjects));
-    renderCurrentTodoItem(currentTodo);
+    renderTodoItem(currentTodo);
 });
 
 //Function to set the todo item's complete button color to reflect whatever priority level it has
@@ -40,7 +40,7 @@ function setCompleteButtonColor(todo, button) {
 };
 
 //Renders todo items to the page along with complete button, show more/less, and edit and delete buttons
-function renderCurrentTodoItem(todo) {
+function renderTodoItem(todo) {
     const todoItemContainer = document.createElement("div");
     todoItemContainer.classList.add("todo-item-container");
     todosContainer.appendChild(todoItemContainer);
@@ -125,6 +125,7 @@ function renderCurrentTodoItem(todo) {
         const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
             selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
             console.log(selectedTodoItem);
+            console.log(currentProject.todoItemsArray);
             let newTodoTitle = document.getElementById("new_todo_name").value;
             let newTodoDescription = document.getElementById("new_todo_description").value;
             let newTodoDueDate = document.getElementById("new_todo_due_date").value;
@@ -194,7 +195,7 @@ export function renderContent(project) {
     todosContainer.replaceChildren();
 
     project.todoItemsArray.forEach((todo) => {
-            renderCurrentTodoItem(todo);
+            renderTodoItem(todo);
         });
 
     //Open todos modal on click
