@@ -11,6 +11,7 @@ export class TodoItem {
         this.priority = priority;
         this.id = TodoItem.nextId++;
         this.id = String(this.id);
+        this.complete = false;
     }
     editTodoItem(newTitle, newDescription, newDueDate, newPriority) {
         if (newTitle === "") {

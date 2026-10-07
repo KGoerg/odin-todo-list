@@ -54,17 +54,32 @@ function renderTodoItem(todo) {
 
     //Adds functionality to complete button on-click
     todoItemCompleteButton.addEventListener("click", () => {
-        if (todoItemCompleteButton.textContent === "") {
+        console.log(todo.complete);
+        todo.complete === true ? todo.complete = false : todo.complete = true;
+        
+        if (todo.complete === true) {
+            addCompletedItemIndicators()
             todoItemCompleteButton.textContent = "✓";
-        } else if (todoItemCompleteButton.textContent === "✓") {
+        } else if (todo.complete === false) {
             todoItemCompleteButton.textContent = "";
-        };
+            removeCompletedItemIndicators();
+        }
 
-        leftTodoVisibleInformation.classList.toggle("reduce-opacity");
-        todoHiddenInformation.classList.toggle("reduce-opacity");
-        showMoreLess.classList.toggle("reduce-opacity")
-        todoEditButton.classList.toggle("reduce-opacity");
-        todoItemName.classList.toggle("strike-through");todoDescription.classList.toggle("strike-through"); todoDueDate.classList.toggle("strike-through");
+        function addCompletedItemIndicators() {
+            leftTodoVisibleInformation.classList.add("reduce-opacity");
+            todoHiddenInformation.classList.add("reduce-opacity");
+            showMoreLess.classList.add("reduce-opacity")
+            todoEditButton.classList.add("reduce-opacity");
+            todoItemName.classList.add("strike-through");todoDescription.classList.add("strike-through"); todoDueDate.classList.add("strike-through");
+        }
+
+        function removeCompletedItemIndicators() {
+            leftTodoVisibleInformation.classList.remove("reduce-opacity");
+            todoHiddenInformation.classList.remove("reduce-opacity");
+            showMoreLess.classList.remove("reduce-opacity")
+            todoEditButton.classList.remove("reduce-opacity");
+            todoItemName.classList.remove("strike-through");todoDescription.classList.remove("strike-through"); todoDueDate.classList.remove("strike-through");
+        }
     });
 
     //Changes color of complete button on mouseenter/mouseleave
