@@ -54,17 +54,19 @@ function renderTodoItem(todo) {
     
     //Adds functionality to complete button on-click
     todoItemCompleteButton.addEventListener("click", () => {
-        todo.complete === true ? todo.complete = false : todo.complete = true;
+        const todoStatus = todo.complete === true ? todo.complete = false : todo.complete = true;
+
+        saveProjectArray("projects", Project.allProjects);
         
-        if (todo.complete === true) {
+        if (todoStatus === true) {
             addCompletedItemIndicators()
             todoItemCompleteButton.textContent = "✓";
-        } else if (todo.complete === false) {
+        } else if (todoStatus === false) {
             todoItemCompleteButton.textContent = "";
             removeCompletedItemIndicators();
         }
 
-        console.log(todo.complete);
+        console.log(todoStatus);
     });
 
     //Changes color of complete button on mouseenter/mouseleave
