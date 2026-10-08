@@ -101,14 +101,9 @@ function renderTodoItem(todo) {
 
     //Creates and sets up event listener for "Show More/Less"
     const showMoreLess = document.createElement("button");
-    showMoreLess.textContent = "Show Details";
+    showMoreLess.classList.add("show-more");
 
     showMoreLess.addEventListener("click", () => {
-        if (showMoreLess.textContent === "Show Details") {
-            showMoreLess.textContent = "Hide Details";
-        } else {
-            showMoreLess.textContent = "Show Details";
-        }
         if (todoHiddenInformation.style.display === "none") {
             todoHiddenInformation.style.display = "flex";
         } else {
