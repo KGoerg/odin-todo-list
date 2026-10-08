@@ -118,7 +118,6 @@ function renderTodoItem(todo) {
 
     //Creates and gives functionality to edit button and its submit button
     const todoEditButton = document.createElement("button");
-    todoEditButton.textContent = "Edit";
     todoEditButton.classList.add("edit");
     todoEditButton.id = todo.id;
 
@@ -158,7 +157,6 @@ function renderTodoItem(todo) {
     const todoDeleteButton = document.createElement("button");
     todoDeleteButton.id = todo.id;
     todoDeleteButton.classList.add("delete");
-    todoDeleteButton.textContent = "Delete";
     rightTodoVisibleInformation.appendChild(todoDeleteButton);
 
     //Delete button functionality
