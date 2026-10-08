@@ -9,6 +9,17 @@ export function deleteProjectStorage(projectName, project) {
   saveProjectArray("projects", Project.allProjects);
 };
 
-export const savedProjectArray = localStorage.getItem("projects");
-export const rehydratedProjectsArray = JSON.parse(savedProjectArray);
+let json;
+let rehydrated;
+
+if(localStorage.getItem("projects") !== "undefined") {
+  json = localStorage.getItem("projects");
+  rehydrated = JSON.parse(json);
+} else {
+  json = null;
+  rehydrated = null;
+};
+
+export const savedProjectArray = json;
+export const rehydratedProjectsArray = rehydrated;
 console.log(rehydratedProjectsArray);
