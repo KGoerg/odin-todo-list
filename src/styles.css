@@ -168,7 +168,20 @@ h1 {
 }
 
 .edit, .delete {
-  width: 30px;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: none;
+}
+
+.edit {
+  background-image: url("../src/assets/edit-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.delete {
+  background-image: url("../src/assets/delete-icon.svg");
 }
 
 .hidden-information {
