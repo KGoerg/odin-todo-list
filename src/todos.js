@@ -4,14 +4,14 @@ import {format} from 'date-fns';
 export class TodoItem {
 
     static nextId = 0;
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, dueDate, priority, complete) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.id = TodoItem.nextId++;
         this.id = String(this.id);
-        this.complete = false;
+        this.complete = complete;
     }
     editTodoItem(newTitle, newDescription, newDueDate, newPriority) {
         if (newTitle === "") {

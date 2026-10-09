@@ -1,7 +1,7 @@
 import { TodoItem , formatDate} from "./todos.js";
 import { currentProject } from "./sidebar-render.js";
 import {format} from 'date-fns';
-import { saveProjectArray } from "./localstorage.js";
+import { rehydratedProjectsArray, saveProjectArray } from "./localstorage.js";
 import { Project } from "./projects.js";
 
 export const contentContainer = document.querySelector("#content");
@@ -54,7 +54,7 @@ function renderTodoItem(todo) {
     
     //Adds functionality to complete button on-click
     todoItemCompleteButton.addEventListener("click", () => {
-        const todoStatus = todo.complete === true ? todo.complete = false : todo.complete = true;
+        const todoStatus = todo.complete === false ? todo.complete = true : todo.complete = false;
 
         saveProjectArray("projects", Project.allProjects);
         
@@ -67,6 +67,8 @@ function renderTodoItem(todo) {
         }
 
         console.log(todoStatus);
+        console.log(currentProject);
+        console.log(rehydratedProjectsArray);
     });
 
     //Changes color of complete button on mouseenter/mouseleave

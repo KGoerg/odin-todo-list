@@ -26,7 +26,7 @@ function renderOnLoad() {
       //Figured out how to get the todos array from localstorage for each project!
       let savedProjectTodos = project.todoItemsArray;
       savedProjectTodos.forEach(todo => {
-        loadLocalStorageProject.todoItemsArray.push(new TodoItem(todo.title, todo.description, todo.dueDate, todo.priority))
+        loadLocalStorageProject.todoItemsArray.push(new TodoItem(todo.title, todo.description, todo.dueDate, todo.priority, todo.complete))
       });
       renderProjectButtons(loadLocalStorageProject);
       })
