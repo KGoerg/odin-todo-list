@@ -80,6 +80,8 @@ export function renderProjectButtons(project) {
       deleteProjectStorage(selectedProject.title, project);
       selectedProject.editProject(newFormTitle, newFormDescription);
       newProjectHeader.textContent = selectedProject.title;
+      projectTitle.textContent = project.title;
+      projectDescription.textContent = project.description;
       if (projectTitle.textContent === "") {
         projectTitle.textContent = selectedProject.title;
       }
