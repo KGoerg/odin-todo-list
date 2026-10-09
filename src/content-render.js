@@ -84,10 +84,11 @@ function renderTodoItem(todo) {
     const todoItemName = document.createElement("p");
     todoItemName.classList.add("todo-list-item");
     todoItemName.textContent = `${todo.title}`;
+    todoItemName.style.fontWeight = "bold";
 
     const todoDueDate = document.createElement("p");
     todoDueDate.classList.add("todo-list-item");
-    todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
+    todoDueDate.textContent = `Due: ${todo.dueDate}`;
 
     const rightTodoVisibleInformation = document.createElement("div");
     rightTodoVisibleInformation.classList.add("right-visible-info");
