@@ -22,6 +22,7 @@ function createDefaultProject() {
         currentDate = formatDate(currentDate);
         const defaultTodo = new TodoItem("My First Task", "You've found the task description!", currentDate, "high");
         defaultProject.addTodoItem(defaultTodo);
+        renderContent(defaultProject);
         saveProjectArray("projects", Project.allProjects);
     }
 };
