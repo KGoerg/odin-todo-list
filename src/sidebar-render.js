@@ -31,6 +31,7 @@ function renderOnLoad() {
       renderProjectButtons(loadLocalStorageProject);
       })
     }
+    renderContent(Project.allProjects[0]);
   };
 
 renderOnLoad();
