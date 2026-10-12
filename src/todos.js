@@ -46,5 +46,5 @@ export function formatDate(date) {
     const month = dateArray[1];
     parseInt(month);
     const day = dateArray[2];
-    return format(new Date(year, month-1, day), "MM/dd/yyyy");
+    return format(new Date(year, month-1, day), "MMMM dd,  yyyy");
 }
