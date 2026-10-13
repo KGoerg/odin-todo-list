@@ -69,14 +69,6 @@ function renderTodoItem(todo) {
         console.log(todoStatus);
     });
 
-    //Changes color of complete button on mouseenter/mouseleave
-    todoItemCompleteButton.addEventListener("mouseenter", () => {
-        todoItemCompleteButton.style.backgroundColor = "rgb(165, 165, 165)";
-    });
-    todoItemCompleteButton.addEventListener("mouseleave", () => {
-        setCompleteButtonColor(todo, todoItemCompleteButton);
-    });
-
     //Separates visible todo item information into left and right sides for styling purposes
     const leftTodoVisibleInformation = document.createElement("div");
     leftTodoVisibleInformation.classList.add("left-visible-info");
@@ -98,7 +90,7 @@ function renderTodoItem(todo) {
     todoHiddenInformation.classList.add("hidden-information");
     todoHiddenInformation.style.display = "none";
     const todoDescription = document.createElement("p");
-    todoDescription.textContent = `Description: ${todo.description}`;
+    todoDescription.textContent = `${todo.description}`;
 
     //Creates and sets up event listener for "Show More/Less"
     const showMoreLess = document.createElement("button");
