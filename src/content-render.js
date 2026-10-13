@@ -17,7 +17,8 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     const todosFormTitle = document.getElementById("todo_name").value;
     const todosFormDescription = document.getElementById("todo_description").value;
     let todoDueDate = document.getElementById("todo_due_date").value;
-    console.log(todoDueDate = formatDate(todoDueDate));
+    console.log(todoDueDate);
+    todoDueDate = formatDate(todoDueDate);
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
     currentTodo = newTodo;
@@ -54,7 +55,7 @@ function renderTodoItem(todo) {
     
     //Adds functionality to complete button on-click
     todoItemCompleteButton.addEventListener("click", () => {
-        const todoStatus = todo.complete === false ? todo.complete = true : todo.complete = false;
+        const todoStatus = todo.complete === true ? todo.complete = false : todo.complete = true;
 
         saveProjectArray("projects", Project.allProjects);
         
@@ -65,10 +66,7 @@ function renderTodoItem(todo) {
             todoItemCompleteButton.textContent = "";
             removeCompletedItemIndicators();
         }
-
         console.log(todoStatus);
-        console.log(currentProject);
-        console.log(rehydratedProjectsArray);
     });
 
     //Changes color of complete button on mouseenter/mouseleave
