@@ -105,7 +105,7 @@ h1 {
   max-width: 300px;
 }
 
-.project:hover {
+.project:hover, #add-new-project:hover {
   background-color: rgb(220, 207, 233);
 }
 
@@ -165,7 +165,7 @@ h1 {
   height: 30px;
 }
 
-.edit, .delete, .show-more {
+.edit, .delete, .show-more, #add-new-project {
   height: 25px;
   width: 25px;
   background-color: transparent;
@@ -184,6 +184,10 @@ button {
 
 .delete {
   background-image: url("../src/assets/delete-icon.svg");
+}
+
+#add-new-project {
+  background-image: url("../src/assets/add-new.svg");
 }
 
 .show-more {
