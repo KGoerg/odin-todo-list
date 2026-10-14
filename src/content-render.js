@@ -194,8 +194,6 @@ const newTodoButton = document.createElement("button");
 
 //The below function is used when clicking on the project's name in the sidebar to load everything into the content panel at once.
 export function renderContent(project) {
-    newTodoButton.textContent = "New To-do Item";
-
     projectTitle.textContent = project.title;
     contentContainerHeader.appendChild(projectTitle);
     
