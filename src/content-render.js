@@ -5,6 +5,9 @@ import { rehydratedProjectsArray, saveProjectArray } from "./localstorage.js";
 import { Project } from "./projects.js";
 
 export const contentContainer = document.querySelector("#content");
+export const contentContainerHeader = document.createElement("div");
+contentContainerHeader.classList.add("content-container-header");
+contentContainer.appendChild(contentContainerHeader);
 
 export let projectTitle = document.createElement("h1");
 export let projectDescription = document.createElement("h2");
@@ -194,13 +197,13 @@ export function renderContent(project) {
     newTodoButton.textContent = "New To-do Item";
 
     projectTitle.textContent = project.title;
-    contentContainer.appendChild(projectTitle);
+    contentContainerHeader.appendChild(projectTitle);
     
     projectDescription.textContent = project.description;
-    contentContainer.appendChild(projectDescription);
+    contentContainerHeader.appendChild(projectDescription);
     
     if (newTodoButton !== null) {
-        contentContainer.appendChild(newTodoButton);
+        contentContainerHeader.appendChild(newTodoButton);
     }
     contentContainer.appendChild(todosContainer);
 
@@ -223,7 +226,7 @@ export function deleteRenderedContent(deleter, container) {
         if (deleter.id === container.id) {
             projectTitle.textContent = "";
             projectDescription.textContent = "";
-            contentContainer.removeChild(newTodoButton);
+            contentContainerHeader.removeChild(newTodoButton);
             contentContainer.removeChild(todosContainer);
         }
 };
