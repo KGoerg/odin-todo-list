@@ -20,15 +20,19 @@ export let currentProject;
 
 function createDefaultProject() {
     if (Project.allProjects[0] === undefined) {
-        const defaultProject = new Project("Default", "My first project :)");
+        const defaultProject = new Project("Default Project", "My first project :)");
         let today = new Date();
         let todayYear = today.getFullYear();
         let todayMonth = today.getMonth() + 1;
         let todayDay = today.getDate();
         let currentDate = `${todayYear}-${todayMonth}-${todayDay}`;
         currentDate = formatDate(currentDate);
-        const defaultTodo = new TodoItem("My First Task", "You've found the task description!", currentDate, "high");
-        defaultProject.addTodoItem(defaultTodo);
+        const defaultHighPriorityTodo = new TodoItem("My First Task", "This one is pretty important!", currentDate, "high");
+        const defaultMediumPriorityTodo = new TodoItem("My Second Task", "This one is somewhat important.", currentDate, "medium");
+        const defaultLowPriorityTodo = new TodoItem("My Third Task", "This isn't important at all!", currentDate, "low");
+        defaultProject.addTodoItem(defaultHighPriorityTodo);
+        defaultProject.addTodoItem(defaultMediumPriorityTodo);
+        defaultProject.addTodoItem(defaultLowPriorityTodo);
         renderProjectButtons(defaultProject);
         renderContent(defaultProject);
     }
