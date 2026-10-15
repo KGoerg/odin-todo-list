@@ -35,11 +35,20 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
 //Function to set the todo item's complete button color to reflect whatever priority level it has
 function setCompleteButtonColor(todo, button) {
     if (todo.priority === "high") {
-        button.style.backgroundColor = "rgba(213, 94, 0, 1)";
+        button.style.borderStyle = "solid";
+        button.style.borderWidth = "3px";
+        button.style.backgroundColor = "#FAFAFA";
+        button.style.borderColor = "rgba(213, 94, 0, 1)";
     } else if (todo.priority === "medium") {
-        button.style.backgroundColor = "rgba(240, 228, 66, 1)";
+        button.style.borderStyle = "solid";
+        button.style.borderWidth = "3px";
+        button.style.backgroundColor = "#FAFAFA";
+        button.style.borderColor = "rgba(240, 228, 66, 1)";
     } else if (todo.priority === "low") {
-        button.style.backgroundColor = "rgba(0, 158, 115, 1)";
+        button.style.borderStyle = "solid";
+        button.style.borderWidth = "3px";
+        button.style.backgroundColor = "#FAFAFA";
+        button.style.borderColor = "rgba(0, 158, 115, 1)";
     };
 };
 
@@ -124,7 +133,7 @@ function renderTodoItem(todo) {
             let newTodoPriority = document.getElementById("new_priority").value;
             todo.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
             todoItemName.textContent = todo.title;
-            todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
+            todoDueDate.textContent = `Due: ${todo.dueDate}`;
             todoDescription.textContent = `Description: ${todo.description}`;
             saveProjectArray("projects", Project.allProjects);
 
