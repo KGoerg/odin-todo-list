@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 body {
   background-color: #FAFAFA;
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: minmax(300px, 350px) 1fr;
   min-height: 100vh;
   font-family: "Noto Sans Multani", sans-serif;
   font-weight: 400;
@@ -204,7 +204,7 @@ h2 {
 
 .todo-item-container {
   display: grid;
-  grid-template-columns: 25px .5fr 200px 1fr;
+  grid-template-columns: 25px 1fr 2fr;
   padding: 30px 0 30px 0;
   opacity: 1;
   border-bottom: 1px dashed #aa78a6;
@@ -237,7 +237,7 @@ h2 {
 .right-visible-info {
   display: flex;
   gap: 10px;
-  justify-self: end;
+  justify-self: start;
 }
 
 .right-visible-info button {
@@ -265,8 +265,18 @@ button {
   background-image: url("../src/assets/delete-icon.svg");
 }
 
+.show-more::before {
+  content: url("../src/assets/show-more-icon.svg");
+}
+
 .show-more {
-  background-image: url("../src/assets/show-more-icon.svg");
+  display: flex;
+  width: 130px;
+  padding: 0;
+}
+
+.show-more:hover {
+  text-decoration: underline;
 }
 
 .right-visible-info .edit {
