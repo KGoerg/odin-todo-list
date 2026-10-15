@@ -135,7 +135,7 @@ function renderTodoItem(todo) {
             todo.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
             todoItemName.textContent = todo.title;
             todoDueDate.textContent = `Due: ${todo.dueDate}`;
-            todoDescription.textContent = `Description: ${todo.description}`;
+            todoDescription.textContent = todo.description;
             saveProjectArray("projects", Project.allProjects);
 
             setCompleteButtonColor(todo, todoItemCompleteButton);
