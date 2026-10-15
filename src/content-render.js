@@ -115,9 +115,6 @@ function renderTodoItem(todo) {
     todoEditButton.addEventListener("click", (event) => {
         todosEditModal.showModal();
         const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
-            selectedTodoItem = currentProject.todoItemsArray.find(element => element.id === todoEditButton.id);
-            console.log(selectedTodoItem);
-            console.log(currentProject.todoItemsArray);
             let newTodoTitle = document.getElementById("new_todo_name").value;
             let newTodoDescription = document.getElementById("new_todo_description").value;
             let newTodoDueDate = document.getElementById("new_todo_due_date").value;
@@ -125,10 +122,11 @@ function renderTodoItem(todo) {
                 newTodoDueDate = formatDate(newTodoDueDate);
             }
             let newTodoPriority = document.getElementById("new_priority").value;
-            selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
-            todoItemName.textContent = selectedTodoItem.title;
-            todoDueDate.textContent = `Due: ${selectedTodoItem.dueDate}`;
-            todoDescription.textContent = selectedTodoItem.description;
+            todo.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
+            todoItemName.textContent = todo.title;
+            todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
+            todoDescription.textContent = `Description: ${todo.description}`;
+            saveProjectArray("projects", Project.allProjects);
 
             setCompleteButtonColor(todo, todoItemCompleteButton);
         }, {once: true});
