@@ -10,23 +10,4 @@ import { saveProjectArray } from "./localstorage.js";
 
 console.log(Project.allProjects);
 
-function createDefaultProject() {
-    if (Project.allProjects[0] === undefined) {
-        const defaultProject = new Project("Default", "My first project :)");
-        renderProjectButtons(defaultProject);
-        let today = new Date();
-        let todayYear = today.getFullYear();
-        let todayMonth = today.getMonth() + 1;
-        let todayDay = today.getDate();
-        let currentDate = `${todayYear}-${todayMonth}-${todayDay}`;
-        currentDate = formatDate(currentDate);
-        const defaultTodo = new TodoItem("My First Task", "You've found the task description!", currentDate, "high");
-        defaultProject.addTodoItem(defaultTodo);
-        renderContent(defaultProject);
-        saveProjectArray("projects", Project.allProjects);
-    }
-};
-
-createDefaultProject();
-
 // localStorage.clear();
