@@ -2,6 +2,7 @@ import { Project } from "./projects.js";
 import { projectTitle, projectDescription, renderContent, deleteRenderedContent, contentContainer} from "./content-render.js";
 import { TodoItem } from "./todos.js";
 import { saveProjectArray, deleteProjectStorage, savedProjectArray, rehydratedProjectsArray} from "./localstorage.js";
+import { formatDate } from "./todos.js";
 
 const projectsContainer = document.querySelector(".projects-container");
 let sidebarEditButtonsArray = [];
@@ -17,24 +18,54 @@ export let currentProject;
 // }
 // saveDefaultProject();
 
-function renderOnLoad() {
+function createDefaultProject() {
+    if (Project.allProjects[0] === undefined) {
+        const defaultProject = new Project("Default", "My first project :)");
+        let today = new Date();
+        let todayYear = today.getFullYear();
+        let todayMonth = today.getMonth() + 1;
+        let todayDay = today.getDate();
+        let currentDate = `${todayYear}-${todayMonth}-${todayDay}`;
+        currentDate = formatDate(currentDate);
+        const defaultTodo = new TodoItem("My First Task", "You've found the task description!", currentDate, "high");
+        defaultProject.addTodoItem(defaultTodo);
+        renderProjectButtons(defaultProject);
+        renderContent(defaultProject);
+    }
+};
+
+addEventListener("DOMContentLoaded", (event) => {
   if (rehydratedProjectsArray !== null) {
     rehydratedProjectsArray.forEach(project => {
       let loadLocalStorageProject = new Project(project.title, project.description);
       console.log(loadLocalStorageProject);
-      //Gets todo-array for this specific project. I want to get the todos from the project and push it to the array from the class.
-      //Figured out how to get the todos array from localstorage for each project!
       let savedProjectTodos = project.todoItemsArray;
       savedProjectTodos.forEach(todo => {
         loadLocalStorageProject.todoItemsArray.push(new TodoItem(todo.title, todo.description, todo.dueDate, todo.priority, todo.complete))
       });
+      renderContent(Project.allProjects[0]);
       renderProjectButtons(loadLocalStorageProject);
       })
     }
-    renderContent(Project.allProjects[0]);
-  };
+    createDefaultProject();
+  });
 
-renderOnLoad();
+  // addEventListener("DOMContentLoaded", (event) => {
+  //   if (rehydratedProjectsArray !== null) {
+  //     rehydratedProjectsArray.forEach(project => {
+  //       let loadLocalStorageProject = new Project(project.title, project.description);
+  //       console.log(loadLocalStorageProject);
+  //       let savedProjectTodos = project.todoItemsArray;
+  //       savedProjectTodos.forEach(todo => {
+  //         loadLocalStorageProject.todoItemsArray.push(new TodoItem (todo.title, todo.description, todo.dueDate, todo.priority, todo.complete));
+  //         renderProjectButtons(loadLocalStorageProject);
+  //         renderContent(Project.allProjects);
+  //       })
+  //     })
+  //   }
+  // })
+
+// renderOnLoad();
 
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
