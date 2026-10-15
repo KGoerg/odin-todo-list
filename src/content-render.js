@@ -127,8 +127,8 @@ function renderTodoItem(todo) {
             let newTodoPriority = document.getElementById("new_priority").value;
             selectedTodoItem.editTodoItem(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
             todoItemName.textContent = selectedTodoItem.title;
-            todoDueDate.textContent = `Due Date: ${selectedTodoItem.dueDate}`;
-            todoDescription.textContent = `Description: ${selectedTodoItem.description}`;
+            todoDueDate.textContent = `Due: ${selectedTodoItem.dueDate}`;
+            todoDescription.textContent = selectedTodoItem.description;
 
             setCompleteButtonColor(todo, todoItemCompleteButton);
         }, {once: true});
