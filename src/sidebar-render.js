@@ -44,28 +44,12 @@ addEventListener("DOMContentLoaded", (event) => {
         loadLocalStorageProject.todoItemsArray.push(new TodoItem(todo.title, todo.description, todo.dueDate, todo.priority, todo.complete))
       });
       renderContent(Project.allProjects[0]);
+      currentProject = Project.allProjects[0];
       renderProjectButtons(loadLocalStorageProject);
       })
     }
     createDefaultProject();
   });
-
-  // addEventListener("DOMContentLoaded", (event) => {
-  //   if (rehydratedProjectsArray !== null) {
-  //     rehydratedProjectsArray.forEach(project => {
-  //       let loadLocalStorageProject = new Project(project.title, project.description);
-  //       console.log(loadLocalStorageProject);
-  //       let savedProjectTodos = project.todoItemsArray;
-  //       savedProjectTodos.forEach(todo => {
-  //         loadLocalStorageProject.todoItemsArray.push(new TodoItem (todo.title, todo.description, todo.dueDate, todo.priority, todo.complete));
-  //         renderProjectButtons(loadLocalStorageProject);
-  //         renderContent(Project.allProjects);
-  //       })
-  //     })
-  //   }
-  // })
-
-// renderOnLoad();
 
 //Creates DOM buttons for project's name, edit, and delete
 export function renderProjectButtons(project) {
