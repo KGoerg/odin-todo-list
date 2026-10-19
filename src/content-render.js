@@ -126,10 +126,11 @@ function renderTodoItem(todo) {
     const todoEditButton = document.createElement("button");
     todoEditButton.classList.add("edit");
     todoEditButton.id = todo.id;
+    const todosEditForm = document.querySelector(".todo-edit-form");
 
     todoEditButton.addEventListener("click", (event) => {
         todosEditModal.showModal();
-        const todoEditSubmitButton = document.querySelector('button[id="todos-edit-submit"]').addEventListener("click", function(event) {
+        todosEditModal.addEventListener("submit", function(event) {
             let newTodoTitle = document.getElementById("new_todo_name").value;
             let newTodoDescription = document.getElementById("new_todo_description").value;
             let newTodoDueDate = document.getElementById("new_todo_due_date").value;
@@ -142,8 +143,8 @@ function renderTodoItem(todo) {
             todoDueDate.textContent = `Due: ${todo.dueDate}`;
             todoDescription.textContent = todo.description;
             saveProjectArray("projects", Project.allProjects);
-
             setCompleteButtonColor(todo, todoItemCompleteButton);
+            todosEditForm.reset();
         }, {once: true});
     });
     
