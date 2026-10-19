@@ -93,7 +93,9 @@ export function renderProjectButtons(project) {
       sidebarEditButtonModal.showModal();
 
     //Gives Edit buttons functionality
-    const sidebarEditSubmitButton = document.querySelector('button[id="edit-submit"]').addEventListener("click", function(event) {
+    const sidebarEditDialog = document.getElementById("edit-project");
+    const sidebarEditForm = document.querySelector(".edit-project-form");
+    sidebarEditDialog.addEventListener("submit", function(event) {
       let selectedProject = Project.allProjects.find(element => element.id === sidebarEditButton.id);
       let newFormTitle = document.getElementById("new_project_name").value;
       let newFormDescription = document.getElementById("new_project_description").value;
@@ -109,6 +111,7 @@ export function renderProjectButtons(project) {
         projectDescription.textContent = selectedProject.description;
       }
       saveProjectArray("projects", Project.allProjects);
+      sidebarEditForm.reset();
       }, { once: true});
     });
 
