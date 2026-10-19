@@ -15,11 +15,15 @@
             <dialog id="new-dialog" closedby="any">
                 <p>Add project details below:</p>
                 <form action="" method="dialog">
-                    <label for="project_name">Project Name</label>
-                    <input type="text" id="project_name" name="project_name" required>
+                    <p class="project-name">
+                        <label for="project_name">Project Name</label>
+                        <input type="text" id="project_name" name="project_name" required>
+                    </p>
 
-                    <label for="project_description">Project Description (Optional):</label>
-                    <input type="text" id="project_description" name="project_description">
+                    <p class="project-description">
+                        <label for="project_description">Project Description (Optional):</label>
+                        <input type="text" id="project_description" name="project_description">
+                    </p>
 
                     <button type="submit" id="project-submit">Submit</button>
                 </form>
@@ -30,11 +34,14 @@
             <dialog id="edit-project" closedby="any">
                <p>Edit project details below:</p>
                <form action="" method="dialog">
-                    <label for="new_project_name">Project Name</label>
-                    <input type="text" id="new_project_name" name="new_project_name">
-
-                    <label for="new_project_description">Project Description:</label>
-                    <input type="text" id="new_project_description" name="new_project_description">
+                    <p class="project-name">
+                        <label for="new_project_name">Project Name</label>
+                        <input type="text" id="new_project_name" name="new_project_name">
+                    </p>
+                    <p class="project-description">
+                        <label for="new_project_description">Project Description:</label>
+                        <input type="text" id="new_project_description" name="new_project_description">
+                    </p>
 
                     <button type="submit" id="edit-submit">Submit</button>
                 </form>
@@ -49,21 +56,26 @@
             <dialog id="todo-dialog" closedby="any">
                 <p>Add to-do below:</p>
                 <form action="" method="dialog">
-                    <label for="todo_name">Name</label>
-                    <input type="text" id="todo_name" name="todo_name" required>
-
-                    <label for="todo_description">Description:</label>
-                    <input type="text" id="todo_description" name="todo_description">
-
-                    <label for="todo_due_date">Due Date:</label>
-                    <input type="date" id="todo_due_date" name="todo_due_date" max="9999-12-31">
-
-                    <label for="priority">Priority Level:</label>
-                    <select id="priority" name="priority">
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
-                    </select>
+                    <p class="todo-name">
+                        <label for="todo_name">Name</label>
+                        <input type="text" id="todo_name" name="todo_name" required>
+                    </p>
+                    <p class="todo-description">
+                        <label for="todo_description">Description:</label>
+                        <input type="text" id="todo_description" name="todo_description">
+                    </p>
+                    <p class="todo-due-date">
+                        <label for="todo_due_date">Due Date:</label>
+                        <input type="date" id="todo_due_date" name="todo_due_date" max="9999-12-31">
+                    </p>
+                    <p class="priority">
+                        <label for="priority">Priority Level:</label>
+                        <select id="priority" name="priority">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </p>
                     <button type="submit" id="todos-submit">Submit</button>
                 </form>
             </dialog>
@@ -73,21 +85,26 @@
             <dialog id="edit-todos" closedby="any">
                 <p>Edit to-do below:</p>
                 <form action="" method="dialog">
-                    <label for="new_todo_name">Name</label>
-                    <input type="text" id="new_todo_name" name="new_todo_name">
-
-                    <label for="new_todo_description">Description:</label>
-                    <input type="text" id="new_todo_description" name="new_todo_description">
-
-                    <label for="new_todo_due_date">Due Date:</label>
-                    <input type="date" id="new_todo_due_date" name="new_todo_due_date" max="9999-12-31">
-
-                    <label for="new_priority">Priority Level:</label>
-                    <select id="new_priority" name="new_priority">
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
-                    </select>
+                    <p class="todo-name">
+                        <label for="new_todo_name">Name</label>
+                        <input type="text" id="new_todo_name" name="new_todo_name">
+                    </p>
+                   <p class="todo-description">
+                        <label for="new_todo_description">Description:</label>
+                        <input type="text" id="new_todo_description" name="new_todo_description">
+                    </p> 
+                    <p class="todo-due-date">
+                        <label for="new_todo_due_date">Due Date:</label>
+                        <input type="date" id="new_todo_due_date" name="new_todo_due_date" max="9999-12-31">
+                    </p>
+                    <p class="priority">
+                        <label for="new_priority">Priority Level:</label>
+                        <select id="new_priority" name="new_priority">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </p>
                     <button type="submit" id="todos-edit-submit">Submit</button>
                 </form>
             </dialog>
