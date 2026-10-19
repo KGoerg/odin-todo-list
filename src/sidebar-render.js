@@ -134,21 +134,16 @@ export function renderProjectButtons(project) {
 };
 
 //Gets user input, then passes that to renderProjectButtons() when clicking the Submit button on the form to render to page and pass Project info to backend Project array.
-export const newProjectSubmitButton = document.getElementById("project-submit").addEventListener("click", function(event) {
+const newProjectDialog = document.getElementById("new-project");
+const newProjectForm = document.querySelector(".new-project-form");
+newProjectDialog.addEventListener("submit", function(event) {
     const projectFormTitle = document.getElementById("project_name").value;
     const projectFormDescription = document.getElementById("project_description").value;
-    if (projectFormTitle === "") {
-    alert("You must enter a Project Name");
-  } else {
     const newProject = new Project(projectFormTitle, projectFormDescription);
     saveProjectArray("projects", Project.allProjects);
     renderProjectButtons(newProject);
     console.log(Project.allProjects);
-}});
-
-//Resets form fields after submitting
-const formResetArray = document.querySelectorAll("form");
-formResetArray.forEach(element => {
-  element.addEventListener("submit", function() {
-  element.reset();
-})});
+    event.preventDefault();
+    newProjectDialog.close();
+    newProjectForm.reset();
+});
