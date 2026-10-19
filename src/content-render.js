@@ -16,7 +16,9 @@ const todosContainer = document.querySelector(".todos-container");
 let currentTodo;
 
 //Get data from the todos form and create a new todo item
-const todosFormSubmitButton = document.getElementById("todos-submit").addEventListener("click", function(event) {
+const todosNewDialog = document.getElementById("todo-dialog");
+const todosNewForm = document.querySelector(".new-todo-form");
+todosNewDialog.addEventListener("submit", function(event) {
     const todosFormTitle = document.getElementById("todo_name").value;
     const todosFormDescription = document.getElementById("todo_description").value;
     let todoDueDate = document.getElementById("todo_due_date").value;
@@ -30,6 +32,9 @@ const todosFormSubmitButton = document.getElementById("todos-submit").addEventLi
     console.log(currentProject.todoItemsArray);
     console.log(saveProjectArray("projects", Project.allProjects));
     renderTodoItem(currentTodo);
+    event.preventDefault();
+    todosNewDialog.close();
+    todosNewForm.reset();
 });
 
 //Function to set the todo item's complete button color to reflect whatever priority level it has
