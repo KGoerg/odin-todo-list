@@ -153,6 +153,7 @@ h2 {
   padding:0;
   cursor: pointer;
   font-weight: bold;
+  word-break: break-all;
 }
 
 .project-header:hover {
