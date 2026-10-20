@@ -22,15 +22,13 @@ todosNewDialog.addEventListener("submit", function(event) {
     const todosFormTitle = document.getElementById("todo_name").value;
     const todosFormDescription = document.getElementById("todo_description").value;
     let todoDueDate = document.getElementById("todo_due_date").value;
-    console.log(todoDueDate);
     todoDueDate = formatDate(todoDueDate);
     const todoPriorityLevel = document.getElementById("priority").value;
     const newTodo = new TodoItem(todosFormTitle, todosFormDescription, todoDueDate, todoPriorityLevel);
     currentTodo = newTodo;
     newTodo.id;
     currentProject.addTodoItem(newTodo);
-    console.log(currentProject.todoItemsArray);
-    console.log(saveProjectArray("projects", Project.allProjects));
+    saveProjectArray("projects", Project.allProjects);
     renderTodoItem(currentTodo);
     event.preventDefault();
     todosNewDialog.close();
@@ -83,7 +81,6 @@ function renderTodoItem(todo) {
             todoItemCompleteButton.textContent = "";
             removeCompletedItemIndicators();
         }
-        console.log(todoStatus);
     });
 
     //Separates visible todo item information into left and right sides for styling purposes
@@ -167,7 +164,6 @@ function renderTodoItem(todo) {
     //Delete button functionality
     todoDeleteButton.addEventListener("click", () => {
         currentProject.deleteTodoItem(selectedTodoItem);
-        console.log(currentProject.todoItemsArray);
         todoDeleteButton.closest(".todo-item-container").remove();
     })
 
@@ -235,12 +231,10 @@ export function renderContent(project) {
 
 //Deletes rendered content
 export function deleteRenderedContent(deleter, container) {
-    console.log(deleter.id);
-    console.log(container.id);
-        if (deleter.id === container.id) {
-            projectTitle.textContent = "";
-            projectDescription.textContent = "";
-            contentContainerHeader.removeChild(newTodoButton);
-            contentContainer.removeChild(todosContainer);
-        }
+    if (deleter.id === container.id) {
+        projectTitle.textContent = "";
+        projectDescription.textContent = "";
+        contentContainerHeader.removeChild(newTodoButton);
+        contentContainer.removeChild(todosContainer);
+    }
 };

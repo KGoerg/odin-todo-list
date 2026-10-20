@@ -1,22 +1,12 @@
 import { Project } from "./projects.js";
 import { projectTitle, projectDescription, renderContent, deleteRenderedContent, contentContainer} from "./content-render.js";
-import { TodoItem } from "./todos.js";
+import { TodoItem, formatDate } from "./todos.js";
 import { saveProjectArray, deleteProjectStorage, savedProjectArray, rehydratedProjectsArray} from "./localstorage.js";
-import { formatDate } from "./todos.js";
 
 const projectsContainer = document.querySelector(".projects-container");
-let sidebarEditButtonsArray = [];
 const sidebarEditButtonModal = document.querySelector("#edit-project");
 
-let sidebarDeleteButtonsArray = [];
 export let currentProject;
-
-//Need to fix this. If saveProjectArray() is included on renderLoad, it causes the issue where refreshing the page eventually drops what's saved in localstorage. However, leaving this as-is means Default Project doesn't render until the page is refreshed.
-// function saveDefaultProject() {
-//   const defaultProject = new Project("Default Project", "A default space to put any tasks you haven't sorted yet!");
-//   saveProjectArray("projects", Project.allProjects);
-// }
-// saveDefaultProject();
 
 function createDefaultProject() {
     if (Project.allProjects[0] === undefined) {
@@ -42,7 +32,6 @@ addEventListener("DOMContentLoaded", (event) => {
   if (rehydratedProjectsArray !== null) {
     rehydratedProjectsArray.forEach(project => {
       let loadLocalStorageProject = new Project(project.title, project.description);
-      console.log(loadLocalStorageProject);
       let savedProjectTodos = project.todoItemsArray;
       savedProjectTodos.forEach(todo => {
         loadLocalStorageProject.todoItemsArray.push(new TodoItem(todo.title, todo.description, todo.dueDate, todo.priority, todo.complete))
@@ -86,7 +75,6 @@ export function renderProjectButtons(project) {
     sidebarEditButton.appendChild(sidebarEditButtonIcon);
     sidebarEditButton.id = project.id;
     sidebarEditButton.classList.add("edit");
-    sidebarEditButtonsArray.push(sidebarEditButton);
     sidebarButtonsContainer.appendChild(sidebarEditButton);
 
     sidebarEditButton.addEventListener("click", (event) => {
@@ -119,7 +107,6 @@ export function renderProjectButtons(project) {
     const sidebarDeleteButton = document.createElement("button");
     sidebarDeleteButton.id = project.id;
     sidebarDeleteButton.classList.add("delete");
-    sidebarDeleteButtonsArray.push(sidebarDeleteButton);
     sidebarButtonsContainer.appendChild(sidebarDeleteButton);
 
     //Gives Delete buttons functionality
@@ -128,7 +115,6 @@ export function renderProjectButtons(project) {
       let selectedProject = Project.allProjects.find(element => element.id === sidebarDeleteButton.id);
       selectedProject.deleteProject(selectedProject);
       deleteProjectStorage(selectedProject.title, selectedProject);
-      console.log(Project.allProjects);
       //Remove div from DOM
       sidebarDeleteButton.closest(".project").remove();
       //Remove rendered content
@@ -145,7 +131,6 @@ newProjectDialog.addEventListener("submit", function(event) {
     const newProject = new Project(projectFormTitle, projectFormDescription);
     saveProjectArray("projects", Project.allProjects);
     renderProjectButtons(newProject);
-    console.log(Project.allProjects);
     event.preventDefault();
     newProjectDialog.close();
     newProjectForm.reset();

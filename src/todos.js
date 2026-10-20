@@ -1,4 +1,3 @@
-//Look more into this npm library I imported for dates formatting
 import {format} from 'date-fns';
 
 export class TodoItem {
